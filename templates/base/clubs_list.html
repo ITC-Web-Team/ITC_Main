@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Clubs List{% endblock %}
+
+{% block content %}
+<h2>Clubs</h2>
+<ul>
+    {% for club in clubs %}
+        <li><a href="{% url 'body_detail' club.name %}">{{ club.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

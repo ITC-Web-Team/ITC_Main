@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Tech Teams{% endblock %}
+
+{% block content %}
+<h2>List of Tech Teams</h2>
+<ul>
+    {% for techteam in techteam %}
+        <li><a href="{% url 'body_detail' techteam.name %}">{{ techteam.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
