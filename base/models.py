@@ -21,7 +21,7 @@ class Member(models.Model):
   body = models.ForeignKey('Body', on_delete=models.CASCADE)
   name = models.CharField(max_length=100)
   position = models.CharField(max_length=100)
-  priority = models.IntegerField(default=0, min_value=0, max_value=10)
+  priority = models.IntegerField(default=0)
   image = models.ImageField(upload_to='members/', blank=True)
 
   def __str__(self):
@@ -60,7 +60,7 @@ class TechStack(models.Model):
 class Cabinet(models.Model):
   name = models.CharField(max_length=100)
   position = models.CharField(max_length=100)
-  priority = models.IntegerField(default=0, min_value=0, max_value=10)
+  priority = models.IntegerField(default=0)
   image = models.ImageField(upload_to='cabinet/', blank=True)
 
   def __str__(self):
