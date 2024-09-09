@@ -1,25 +1,34 @@
-{% extends 'base.html' %}
-
-{% block title %}Other Bodies{% endblock %}
-
-{% block content %}
-<div class="p-6 rounded-2xl bg-white bg-opacity-5 backdrop-blur-md shadow-lg border-2">
-    <div class="w-full text-white">
-        <h2 class="text-5xl font-bold text-center mb-8">Other Bodies</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:gap-4 gap-6 md:gap-10 text-black">
-            {% for otherbody in otherbodies %}
-                <a href="{% url 'body_detail' otherbody.name %}" class="block">
-                    <div class="z-10 p-4 md:p-6 w-full max-w-xs mx-auto h-60 flex items-center rounded-xl shadow-md cursor-pointer transform hover:-translate-y-2 transition duration-300 backdrop-filter backdrop-blur-lg bg-white bg-opacity-5">
-                        <img src="{{ otherbody.logo }}" alt="{{ otherbody.name }} Logo"
-                            class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 mr-4 md:mr-6">
-                        <div class="flex flex-col justify-center">
-                            <h1 class="text-2xl md:text-3xl text-white font-semibold">{{ otherbody.name }}</h1>
-                            <h4 class="text-sm md:text-base text-gray-400 mt-1 md:mt-2">{{ otherbody.description }}</h4>
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
+{% extends 'base/base.html' %} {% block title %}Other Bodies{% endblock %} {%block content %}
+<div
+  class="p-6 rounded-2xl bg-white bg-opacity-5 backdrop-blur-md shadow-lg border-2"
+>
+  <div class="w-full text-white">
+    <h2 class="text-5xl font-bold text-center mb-8">Other Bodies</h2>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:gap-4 gap-6 md:gap-10 text-black"
+    >
+      {% for otherbody in otherbodies %}
+      <a href="{% url 'body_detail' otherbody.name %}" class="block">
+        <div
+          class="z-10 p-4 md:p-6 w-full max-w-xs mx-auto h-60 flex items-center rounded-xl shadow-md cursor-pointer transform hover:-translate-y-2 transition duration-300 backdrop-filter backdrop-blur-lg bg-white bg-opacity-5"
+        >
+          <img
+            src="{{ otherbody.logo }}"
+            alt="{{ otherbody.name }} Logo"
+            class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 mr-4 md:mr-6"
+          />
+          <div class="flex flex-col justify-center">
+            <h1 class="text-2xl md:text-3xl text-white font-semibold">
+              {{ otherbody.name }}
+            </h1>
+            <h4 class="text-sm md:text-base text-gray-400 mt-1 md:mt-2">
+              {{ otherbody.description }}
+            </h4>
+          </div>
         </div>
+      </a>
+      {% endfor %}
     </div>
+  </div>
 </div>
 {% endblock %}

@@ -1,62 +1,93 @@
-{% extends 'base.html' %}
-
-{% block title %}{{ body.name }}{% endblock %}
-
-{% block content %}
+{% extends 'base/base.html' %} {% block title %}{{ body.name }}{% endblock %} {%
+block content %}
 <div class="w-11/12 xs:w-full mx-auto">
-    <div class="p-6 rounded-2xl bg-white bg-opacity-5 backdrop-blur-md shadow-lg border-2">
-        <div class="mb-8">
-            <div class="flex items-center mb-4">
-                <img src="{{ body.logo }}" alt="{{ body.name }} logo" class="h-20 w-20 rounded-full mr-6">
-                <h1 class="text-5xl font-bold">{{ body.name }}</h1>
-            </div>
-            <p class="text-lg">{{ body.description }}</p>
-            <p class="text-3xl font-semibold mt-4">Contact: <a href="mailto:{{ body.contact_email }}">{{ body.contact_email }}</a></p>
-        </div>
-        {% if members %}
-            <hr class="my-8 border-t-2 border-gray-300">
-            <div class="mb-8">
-                <h2 class="text-4xl font-bold mb-4">Team</h2>
-                <div class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                    {% for member in members %}
-                        <div class="flex flex-col items-center">
-                            <div class="w-28 h-28 rounded-full overflow-hidden shadow-md bg-white bg-opacity-20">
-                                <img src="{{ members.image }}" alt="{{ member.name }} photo" class="w-full h-full object-cover">
-                            </div>
-                            <p class="mt-2 mb-1 text-lg font-medium text-center">{{ member.name }}</p>
-                            <p class="text-base text-gray-300 text-center mb-4">{{ member.position }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
-        {% if body.instagram or body.linkedin or body.github or body.website %}
-            <hr class="my-8 border-t-2 border-gray-300">
-            <div>
-                <div class="flex mt-4">
-                    {%if body.instagram%}
-                        <a href="{{ body.instagram }}" class="hover:text-gray-200">
-                            <img src="img/Insta.png" alt="Instagram" class="h-12 opacity-100 hover:opacity-70">
-                        </a>
-                    {%endif%}
-                    {%if body.linkedin%}
-                        <a href="{{ body.linkedin }}" class="hover:text-gray-200">
-                            <img src="img/Link.png" alt="LinkedIn" class="ml-1 h-12 opacity-100 hover:opacity-70">
-                        </a>
-                    {%endif%}
-                    {%if body.github%}
-                        <a href="{{ body.github }}" class="hover:text-gray-200">
-                            <img src="img/Git.png" alt="GitHub" class="h-12 opacity-100 hover:opacity-70">
-                        </a>
-                    {%endif%}
-                    {%if body.website%}
-                        <a href="{{ body.website }}">
-                            <p class="ml-2 text-2xl text-black font-semibold text-center bg-white rounded-2xl p-2 hover:bg-gray-300">Website</p>
-                        </a>
-                    {%endif%}
-                </div>
-            </div>
-        {% endif %}
+  <div
+    class="p-6 rounded-2xl bg-white bg-opacity-5 backdrop-blur-md shadow-lg border-2"
+  >
+    <div class="mb-8">
+      <div class="flex items-center mb-4">
+        <img
+          src="{{ body.logo }}"
+          alt="{{ body.name }} logo"
+          class="h-20 w-20 rounded-full mr-6"
+        />
+        <h1 class="text-5xl font-bold">{{ body.name }}</h1>
+      </div>
+      <p class="text-lg">{{ body.description }}</p>
+      <p class="text-3xl font-semibold mt-4">
+        Contact:
+        <a href="mailto:{{ body.contact_email }}">{{ body.contact_email }}</a>
+      </p>
     </div>
+    {% if members %}
+    <hr class="my-8 border-t-2 border-gray-300" />
+    <div class="mb-8">
+      <h2 class="text-4xl font-bold mb-4">Team</h2>
+      <div
+        class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
+      >
+        {% for member in members %}
+        <div class="flex flex-col items-center">
+          <div
+            class="w-28 h-28 rounded-full overflow-hidden shadow-md bg-white bg-opacity-20"
+          >
+            <img
+              src="{{ members.image }}"
+              alt="{{ member.name }} photo"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <p class="mt-2 mb-1 text-lg font-medium text-center">
+            {{ member.name }}
+          </p>
+          <p class="text-base text-gray-300 text-center mb-4">
+            {{ member.position }}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %} {% if body.instagram or body.linkedin or body.github or
+    body.website %}
+    <hr class="my-8 border-t-2 border-gray-300" />
+    <div>
+      <div class="flex mt-4">
+        {%if body.instagram%}
+        <a href="{{ body.instagram }}" class="hover:text-gray-200">
+          <img
+            src="img/Insta.png"
+            alt="Instagram"
+            class="h-12 opacity-100 hover:opacity-70"
+          />
+        </a>
+        {%endif%} {%if body.linkedin%}
+        <a href="{{ body.linkedin }}" class="hover:text-gray-200">
+          <img
+            src="img/Link.png"
+            alt="LinkedIn"
+            class="ml-1 h-12 opacity-100 hover:opacity-70"
+          />
+        </a>
+        {%endif%} {%if body.github%}
+        <a href="{{ body.github }}" class="hover:text-gray-200">
+          <img
+            src="img/Git.png"
+            alt="GitHub"
+            class="h-12 opacity-100 hover:opacity-70"
+          />
+        </a>
+        {%endif%} {%if body.website%}
+        <a href="{{ body.website }}">
+          <p
+            class="ml-2 text-2xl text-black font-semibold text-center bg-white rounded-2xl p-2 hover:bg-gray-300"
+          >
+            Website
+          </p>
+        </a>
+        {%endif%}
+      </div>
+    </div>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}

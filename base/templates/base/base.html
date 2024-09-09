@@ -20,15 +20,15 @@
     </script>
 </head>
 <body class="bg-black">
-    <nav class="bg-black text-white sticky h-8 mt-2 border-b-2 z-50">
-        <div class="w-11/12 mx-auto items-center flex justify-between text-xs text-thin">
+<nav class="bg-black text-white sticky h-8 mt-2 z-50">
+        <div class="w-11/12 mx-auto items-center flex justify-between text-md text-thin">
             <a href="/Home.html" class="flex items-center">
-                <img src="img/ITClogoWhite.png" alt="Logo.png Load Error" class="h-6 mb-2 sm:ml-4 xs:ml-6">
+                <img src="https://itc.gymkhana.iitb.ac.in/static/mainwebsite/ITClogoWhite.png" alt="Logo.png Load Error" class="h-6 mb-2 sm:ml-4 xs:ml-6">
             </a>
             <div class="flex items-center space-x-6 ml-auto mb-2 xs:hidden" id="navbarNav">
                 <ul class="flex space-x-6">
                     <li><a href="{% url 'home' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Home</a></li>
-                    <li><a href="{% url 'clubs_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Clubs</a></li>
+                    <li><a href="{% url 'club_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Clubs</a></li>
                     <li><a href="{% url 'techteam_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Tech Teams</a></li>
                     <li><a href="{% url 'otherbodies_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Other Bodies</a></li>
                     <li><a href="{% url 'portal_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Portals</a></li>
@@ -45,12 +45,12 @@
                 </svg>
             </button>
         </div>
-        <div class="hidden absolute inset-x-0 top-16 bg-black bg-opacity-95 overflow-y-auto max-h-screen"
+        <div class="hidden absolute inset-x-0 top-8 bg-black bg-opacity-95 overflow-y-auto max-h-screen"
             id="mobileMenu">
             <div class="text-white ml-10 py-6 px-4">
                 <ul class="space-y-6">
                     <li><a href="{% url 'home' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Home</a></li>
-                    <li><a href="{% url 'clubs_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Clubs</a></li>
+                    <li><a href="{% url 'club_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Clubs</a></li>
                     <li><a href="{% url 'techteam_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Tech Teams</a></li>
                     <li><a href="{% url 'otherbodies_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Other Bodies</a></li>
                     <li><a href="{% url 'portal_list' %}" class="nav-link hover:text-gray-400 transition duration-300 ease-in-out">Portals</a></li>
@@ -61,7 +61,8 @@
             </div>
         </div>
     </nav>
-    <main class="bg-black p-8 rounded-t-3xl text-white w-screen h-min-screen">
+
+    <main class="text-white w-[98vw] min-h-[90vh]">
         {% block content %}
         {% endblock %}
     </main>
