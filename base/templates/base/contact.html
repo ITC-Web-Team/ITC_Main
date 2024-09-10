@@ -1,9 +1,0 @@
-{% extends 'base/base.html' %} {% block title %}Contact{% endblock %} {% block
-content %}
-<h2>Contact</h2>
-<ul>
-  {% for cabinet_member in Cabinet %}
-  <li>{{ cabinet_member.name }} - {{ cabinet_member.position }}</li>
-  {% endfor %}
-</ul>
-{% endblock %}

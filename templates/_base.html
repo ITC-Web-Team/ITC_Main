@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}ITC Official Website{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'src/output.css' %}" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        xs: { max: "770px" },
+                        nv: { min: "770px" },
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="bg-black">
+    <nav class="text-white sticky top-0 h-10 pt-2 z-50">
+        <div class="w-11/12 mx-auto flex justify-between items-center text-md text-thin">
+            <a href="/Home.html" class="flex items-center">
+                <img src="https://itc.gymkhana.iitb.ac.in/static/mainwebsite/ITClogoWhite.png"
+                    alt="Logo.png Load Error" class="h-8 sm:ml-4 xs:ml-6" />
+            </a>
+            <div class="flex items-center space-x-6 ml-auto mb-2 xs:hidden" id="navbarNav">
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <a href="{% url 'home' %}" class="nav-link">
+                        <button type="button"
+                            class="px-4 py-2 text-sm font-medium text-white bg-transparent border border-white rounded-s-lg transition duration-300 ease-in-out hover:bg-white hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-white focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                            Home
+                        </button>
+                    </a>
+                    <a href="{% url 'club_list' %}" class="nav-link">
+                        <button type="button"
+                            class="px-4 py-2 text-sm font-medium text-white bg-transparent border-t border-r border-b border-white transition duration-300 ease-in-out hover:bg-white hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-white focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                            Clubs
+                        </button>
+                    </a>
+                    <a href="{% url 'techteam_list' %}" class="nav-link">
+                        <button type="button"
+                            class="px-4 py-2 text-sm font-medium text-white bg-transparent border-t border-r border-b border-white transition duration-300 ease-in-out hover:bg-white hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-white focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                            Tech Teams
+                        </button>
+                    </a>
+                    <a href="{% url 'otherbodies_list' %}" class="nav-link">
+                        <button type="button"
+                            class="px-4 py-2 text-sm font-medium text-white bg-transparent border-t border-r border-b border-white transition duration-300 ease-in-out hover:bg-white hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-white focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                            Other Bodies
+                        </button>
+                    </a>
+                    <a href="{% url 'portal_list' %}" class="nav-link">
+                        <button type="button"
+                            class="px-4 py-2 text-sm font-medium text-white bg-transparent border-t border-r border-b border-white transition duration-300 ease-in-out hover:bg-white hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-white focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                            Portals
+                        </button>
+                    </a>
+                    <a href="{% url 'achievement_list' %}" class="nav-link">
+                        <button type="button"
+                            class="px-4 py-2 text-sm font-medium text-white bg-transparent border-t border-r border-b border-white transition duration-300 ease-in-out hover:bg-white hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-white focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                            Achievements
+                        </button>
+                    </a>
+                    <a href="{% url 'halloffame_list' %}" class="nav-link">
+                        <button type="button"
+                            class="px-4 py-2 text-sm font-medium text-white bg-transparent border-t border-b border-white transition duration-300 ease-in-out hover:bg-white hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-white focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                            Hall Of Fame
+                        </button>
+                    </a>
+                    <a href="{% url 'contact' %}" class="nav-link">
+                        <button type="button"
+                            class="px-4 py-2 text-sm font-medium text-white bg-transparent border border-white rounded-e-lg transition duration-300 ease-in-out hover:bg-white hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-white focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                            Contact
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="text-white w-full min-h-[90vh]">
+        {% block content %} {% endblock %}
+    </main>
+
+    <footer class="text-white text-center py-4">
+        <p>Developed by ITC Web Team with ❤️</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+</body>
+
+</html>

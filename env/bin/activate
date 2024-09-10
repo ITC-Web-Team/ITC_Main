@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/deepak/Desktop/itc/ITC_Main/env"
+VIRTUAL_ENV="/home/deepak/Desktop/itc/django-flowbite/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/deepak/Desktop/itc/ITC_Main/env"
+set -gx VIRTUAL_ENV "/home/deepak/Desktop/itc/django-flowbite/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
