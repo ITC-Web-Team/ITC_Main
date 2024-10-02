@@ -8,15 +8,15 @@ def home(request):
 
 def clubs_list(request):
     clubs = Body.objects.filter(type=0)
-    return render(request, 'body_list.html', {'bodies': clubs , 'type': 'Clubs'})
+    return render(request, 'body_list.html', {'bodies': clubs , 'type': 'CLUBS'})
 
 def techteam_list(request):
     techteam = Body.objects.filter(type=1)
-    return render(request, 'body_list.html', {'bodies': techteam , 'type': 'Tech Teams'})
+    return render(request, 'body_list.html', {'bodies': techteam , 'type': 'TECH TEAMS'})
 
 def otherbodies_list(request):
     otherbodies = Body.objects.filter(type=2)
-    return render(request, 'body_list.html', {'bodies': otherbodies , 'type': 'Other Bodies'})
+    return render(request, 'body_list.html', {'bodies': otherbodies , 'type': 'OTHER BODIES'})
 
 def body_detail(request, name):
     body = get_object_or_404(Body, name=name)
