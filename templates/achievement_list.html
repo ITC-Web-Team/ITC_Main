@@ -10,7 +10,7 @@
         </div>
         <div class="flex">
             <div class=" rounded-lg ml-64 mr-16 w-1/12 font-bold text-2xl text-white flex">
-                <form action="">
+                {% comment %} <form action="">
                     <label for="year" class="flex bg-pink-800  rounded-lg justify-center mb-4 py-2">Year</label>
                     <select name="year" id="years">
                         <option value="2024" class=" bg-pink-800  rounded-lg justify-center mb-2 py-2">2024</option>
@@ -20,27 +20,50 @@
                         <option value="2020" class=" bg-pink-800  rounded-lg justify-center mb-2 py-2">2020</option>
                     </select>
                     
-                </form>    
+                </form>   {% endcomment %}
+                <form action="">
+                    <label for="body" class="flex bg-pink-800  rounded-lg justify-center mb-4 py-2">Body</label>
+                    {% comment %} <select name="body" id="body"> {% endcomment %}
+                        <a href="{% url 'achievement_list'  %}" >
+                            all
+                        </a>
+                        {% for achievement in bodylist  %}
+                        {% comment %} <option value="Bodies" class=" bg-pink-800  rounded-lg justify-center mb-2 py-2"> {% endcomment %}
+                            <a href="{% url 'achievement_detail' achievement.body.name %}" >
+                                {{achievement.body}}
+                            </a>
+                        {% comment %} </option> {% endcomment %}
+                        {% endfor%}
+                        {% comment %} <option value="2023" class=" bg-pink-800  rounded-lg justify-center mb-2 py-2">2023</option>
+                        <option value="2022" class=" bg-pink-800  rounded-lg justify-center mb-2 py-2">2022</option>
+                        <option value="2021" class=" bg-pink-800  rounded-lg justify-center mb-2 py-2">2021</option>
+                        <option value="2020" class=" bg-pink-800  rounded-lg justify-center mb-2 py-2">2020</option> {% endcomment %}
+                    {% comment %} </select> {% endcomment %}
+                    
+                </form>  
             </div>
+            {% for achievement in achievements  %}
             <div class="flex-col w-5/12">
                 <div class="flex bg-pink-900 rounded-lg h-22 m-2">
                     <div class="text-white flex">
-                        <div><img class="rounded-full mx-2 my-1 w-[70px] ml-6" src="./assets/images/download.png"></div>
+                        <div><img class="rounded-full mx-2 my-1 w-[70px] ml-6" src="{{ achievement.body.logo.url }}"></div>
                         <div class="flex-col ml-8 gap-2"> 
                             <div class="heading flex">
-                                <div class="flex text-white font-extrabold text-xl ">IITB Rocket Team</div>
+                                <div class="flex text-white font-extrabold text-xl ">{{ achievement.body }}</div>
                             </div>
                             
                             <div class="description flex-col">
-                                <div class="competition_name flex text-white font-semibold text-l">SA Cup 2024</div>
-                                <div class="achievement flex text-white font-semibold text-l">2nd position nationally in 10K COTS category</div>
+                                <div class="competition_name flex text-white font-semibold text-l">{{achievement.title}}</div>
+                                <div class="achievement flex text-white font-semibold text-l">{{achievement.description}}</div>
                             </div>
                             
                         </div>
                     </div>
                 </div>
 
-                <div class="flex bg-pink-900 rounded-lg h-22 m-2">
+                {% endfor%}
+
+                {% comment %} <div class="flex bg-pink-900 rounded-lg h-22 m-2">
                     <div class="text-white flex">
                         <div><img class="rounded-full mx-2 my-1 w-[70px] ml-6" src="./assets/images/download.png"></div>
                         <div class="flex-col ml-8 gap-2"> 
@@ -74,9 +97,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>        
     </div>
  
 </body>
 </html>
+{% endblock %}

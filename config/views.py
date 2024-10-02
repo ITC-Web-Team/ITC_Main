@@ -29,7 +29,14 @@ def portal_list(request):
 
 def achievement_list(request):
     achievements = Achievement.objects.all()
-    return render(request, 'achievement_list.html', {'achievements': achievements})
+    return render(request, 'achievement_list.html', {'achievements': achievements, 'bodylist': achievements})
+
+def achievement_detail(request, name):
+    body = get_object_or_404(Body, name = name)    
+    achievements = Achievement.objects.filter(body=body)
+
+    bodylist = Achievement.objects.all()
+    return render(request, 'achievement_list.html', {'achievements': achievements, 'bodylist': bodylist})
 
 def halloffame_list(request):
     halloffame = Achievement.objects.all()
