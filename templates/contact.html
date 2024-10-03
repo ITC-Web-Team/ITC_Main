@@ -4,14 +4,14 @@
 {% block title %}Contact{% endblock %}
 
 {% block content %}
-<div class="flex w-screen xl:w-[90%] h-auto flex-col m-28 items-center">
-  <h1 class="text-white font-font text-6xl">CABINET</h1>
+<div class="flex w-screen xl:w-[90%] h-auto flex-col m-8 lg:m-28 items-center">
+  <h1 class="text-white font-font text-4xl md:text-6xl mb-10">CABINET</h1>
   <div class="w-full flex flex-row flex-wrap items-start justify-center">
     {% for member in cabinet %}
-    <div class="w-[75vw] lg:w-[28%] m-8 p-4 border border-gray-500 rounded-2xl">
-      <div class="flex flex-col xl:flex-row items-center gap-4 m-2">
-        <img class="rounded-full w-28" src="{{ member.image.url }}" alt="Profile picture of {{ member.name }}" />
-        <span class="text-white text-2xl font-black">{{ member.name }}</span>
+    <div class="w-[90vw] sm:w-[60vw] lg:w-[28%] m-4 p-4 border border-gray-500 rounded-2xl">
+      <div class="flex flex-col md:flex-row items-center gap-4 m-2">
+        <img class="rounded-full w-20 h-20 md:w-28 md:h-28" src="{{ member.image.url }}" alt="Profile picture of {{ member.name }}" />
+        <span class="text-white text-xl md:text-2xl font-black">{{ member.name }}</span>
       </div>
       <hr class="border-gray-500" />
       <div class="m-2">
@@ -25,12 +25,12 @@
       </div>
       <hr class="border-gray-500" />
       <div class="flex">
-        <div class="w-10 h-10 border border-gray-500 rounded m-2">
+        <div class="w-8 h-8 md:w-10 md:h-10 border border-gray-500 rounded m-2">
             <a href="https://www.linkedin.com/in/vaishnavi-rajput-iitb">
                 <img src="{% static 'img/linkedin.png' %}" alt="LinkedIn">
             </a>
         </div>
-        <div class="w-10 h-10 border border-gray-500 rounded m-2">
+        <div class="w-8 h-8 md:w-10 md:h-10 border border-gray-500 rounded m-2">
             <a href="https://www.instagram.com/basketball_iitb/">
                 <img src="{% static 'img/instagram.png' %}" alt="Instagram">
             </a>
@@ -40,24 +40,19 @@
     {% endfor %}
   </div>
 
-  <div class="flex flex-col">
-    
-
-      <div class="flex flex-col gap-4">
-        <div class="flex flex-row">
-          <img class="w-7 h-7" src="{% static 'img/map-pin.svg' %}" alt="Map pin" />
-          <h1 class="text-white font-font">Where you can find us?</h1>
-        </div>
-        <iframe
-          class="lg:w-[600px] lg:h-[400px] w-[400px] h-[400px]"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1550.7623311490229!2d72.91352570167592!3d19.135329810827326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b809cdbb26f9%3A0x1bc7aa048f060162!2sStudents%20Activity%20Center!5e0!3m2!1sen!2sin!4v1725463700699!5m2!1sen!2sin"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
+  <div class="flex flex-col items-center mt-12 lg:mt-20">
+    <div class="flex flex-row items-center gap-2">
+      <img class="w-5 h-5 md:w-7 md:h-7" src="{% static 'img/map-pin.svg' %}" alt="Map pin" />
+      <h1 class="text-white font-font text-lg md:text-xl">Where you can find us?</h1>
     </div>
+    <iframe
+      class="mt-6 w-[90vw] sm:w-[80vw] lg:w-[600px] h-[300px] sm:h-[400px]"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1550.7623311490229!2d72.91352570167592!3d19.135329810827326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b809cdbb26f9%3A0x1bc7aa048f060162!2sStudents%20Activity%20Center!5e0!3m2!1sen!2sin!4v1725463700699!5m2!1sen!2sin"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
   </div>
 </div>
 {% endblock %}

@@ -1,0 +1,80 @@
+{% extends '_base.html' %} 
+{% block title %}Hall of Fame{% endblock %} 
+
+{% block content %}
+<div class="bg-opacity-10 backdrop-blur-md shadow-lg flex w-screen xl:w-[90%] h-auto flex-col m-28 items-center">
+  <div class="w-full text-white">
+    <h1 class="text-6xl font-font mb-20 font-bold text-center">
+        HALL OF FAME
+      </h2>
+    </div>
+
+    {% for interiit in interiit_list %}
+    <div class="rounded-lg justify-evenly">
+      <div
+        class="flex-col h-[75%] w-[75%] mx-auto rounded-2xl bg-cover bg-center"
+        style="background-image: url('{{ interiit.img.url }}');"
+      >
+        <!-- Overlay for text readability -->
+        <div class="flex bg-black bg-opacity-70 h-full rounded-2xl">
+          <div class="flex-col w-1/2 p-8">
+            <div class="flex items-center">
+              <img
+                class="rounded-full px-2 py-1 m-3 w-36"
+                src="{{ interiit.logo.url }}"
+              />
+              <div class="flex-col my-auto ml-4">
+                <div class="text-white font-extrabold text-3xl mb-2">
+                  {{ interiit.title }}
+                </div>
+                <div class="text-white text-2xl font-semibold">
+                  {{ interiit.subtitle}}
+                </div>
+              </div>
+            </div>
+            <div class="flex w-[60%] h-[60%] mt-10 gap-6">
+              <div class="flex-col items-center">
+                <img src="./assets/images/3.png" class="w-20 h-20" />
+                <div class="text-white text-center text-7xl font-extrabold mt-4">{{ interiit.bronze }}</div>
+              </div>
+              <div class="flex-col items-center">
+                <img src="./assets/images/1.png" class="w-20 h-20" />
+                <div class="text-white text-center text-7xl font-extrabold mt-4">{{ interiit.gold }}</div>
+              </div>
+              <div class="flex-col items-center">
+                <img src="./assets/images/2.png" class="w-20 h-20" />
+                <div class="text-white text-center text-7xl font-extrabold mt-4">{{ interiit.silver }}</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex-col w-1/2 p-8">
+            <div class="text-white text-l mb-8 text-center leading-7">
+              {{ interiit.description }}
+            </div>
+            
+            <div class="overflow-x-auto mb-8">
+              <table class="table-auto border-separate border-spacing-2 mx-auto">
+                <thead class="bg-lime-300 text-black">
+                  <tr class="text-2xl">
+                    <th class="px-6 py-2">Company</th>
+                    <th class="px-6 py-2">Position</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white text-black">
+                  {% for problem in problemstatements %}
+                  <tr class="text-xl hover:bg-lime-300 transition-colors">
+                    <td class="px-6 py-2 text-center">{{ problem.title }}</td>
+                    <td class="px-6 py-2 text-center">{{ problem.position }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

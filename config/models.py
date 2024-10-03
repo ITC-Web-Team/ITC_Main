@@ -88,6 +88,7 @@ class WorkReport(models.Model):
 class InterIIT(models.Model):
   logo = models.ImageField(upload_to='interiit/')
   title = models.CharField(max_length=100)
+  subtitle = models.CharField(max_length=100, blank=True)
   description = models.TextField()
   img = models.ImageField(upload_to='interiit/')
   gold = models.IntegerField(default=0)
@@ -95,16 +96,13 @@ class InterIIT(models.Model):
   bronze = models.IntegerField(default=0)  
 
   def __str__(self):
-    return self.year + ' - ' + self.location + ' - ' + self.position
+    return self.title
   
 
 class ProblemStatements(models.Model):
   interiit = models.ForeignKey('InterIIT', on_delete=models.CASCADE)
   title = models.CharField(max_length=100)
-  description = models.TextField()
   position = models.IntegerField(default=0)
-  img = models.ImageField(upload_to='problemstatements/')
-  link = models.URLField()
 
   def __str__(self):
     return self.title
