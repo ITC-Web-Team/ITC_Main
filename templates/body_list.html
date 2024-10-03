@@ -1,29 +1,25 @@
-{% extends '_base.html' %} 
+{% extends '_base.html' %}
 {% block title %}{{ type }}{% endblock %}
 
 {% block content %}
 <div class="bg-opacity-10 backdrop-blur-md shadow-lg flex w-screen xl:w-[90%] h-auto flex-col m-28 items-center">
   <div class="w-full text-white">
     <h1 class="text-6xl font-font mb-20 font-bold text-center">{{ type }}</h1>
-    
-    <!-- <div class="flex w-screen xl:w-[90%] h-auto flex-col m-28 items-center">
-      <h1 class="text-white font-font font-bold text-6xl mb-20">PORTALS</h1> -->
 
-    <div class="grid grid-cols-1 m-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full">
       {% for body in bodies %}
-      <a href="{% url 'body_detail' body.name %}" class="block transform transition duration-300 hover:scale-105">
-        <div class="z-10 border border-gray-600 rounded-xl p-4 md:p-6 w-full max-w-xs mx-auto flex flex-col items-center shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-5">
-          <div class="flex items-center">
-            <img src="{{ body.logo.url }}" alt="{{ body.name }} Logo" class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-gray-500 mr-4 md:mr-6" />
-            <h1 class="text-2xl md:text-3xl font-semibold text-white">{{ body.name }}</h1>
+      <a href="{% url 'body_detail' body.name %}" class="block transform transition-transform duration-300 hover:scale-105">
+        <div class="border border-gray-600 rounded-lg p-4 md:p-6 flex flex-col items-center shadow-lg backdrop-filter backdrop-blur-md bg-white bg-opacity-10 hover:bg-opacity-20 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <img src="{{ body.logo.url }}" alt="{{ body.name }} Logo" class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-gray-500 mr-4" />
+            <h2 class="text-xl md:text-2xl font-semibold text-white">{{ body.name }}</h2>
           </div>
-          <div class="mt-2 text-center">
-            <p class="text-sm md:text-base text-gray-300">{{ body.short_description }}</p>
-          </div>
+          <p class="text-sm md:text-base text-gray-300 text-center">{{ body.short_description }}</p>
         </div>
       </a>
       {% endfor %}
     </div>
+
   </div>
 </div>
 {% endblock %}
