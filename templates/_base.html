@@ -10,7 +10,9 @@
     <title>{% block title %}ITC Official Website{% endblock %}</title>
 
     <link rel="stylesheet" href="{% static 'src/output.css' %}" />
-    <link rel="stylesheet" href="{% static 'src/styles.css' %}" />
+    {% comment %} <link rel="stylesheet" href="{% static 'src/styles.css' %}" /> {% endcomment %}
+    <script src="https://cdn.tailwindcss.com"></script>
+
 
     <script>
         tailwind.config = {
