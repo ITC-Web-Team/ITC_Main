@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-y(g2*7o5b97#$ywih+k8ve-v2+c)b8jonqw+2w0^tt*b=3b-hu
 DEBUG = True
 
 ALLOWED_HOSTS = [' https://www.tech-iitb.org', 'tech-iitb.org','www.tech-iitb.org','localhost']
-CSRF_TRUSTED_ORIGINS = ['https://www.tech-iitb.org', 'tech-iitb.org','www.tech-iitb.org','localhost']
+CSRF_TRUSTED_ORIGINS = ['https://www.tech-iitb.org', 'https://tech-iitb.org']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
