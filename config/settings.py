@@ -66,7 +66,8 @@ DATABASES = {
         'NAME': 'mainwebsite',
         'USER': 'postgres',
         'PASSWORD': 'AMe4kNLwCJdNCo0hWdn6W1tdcSykixoWfCALXaeVbpnD2J7z1OLIEjruUyqq6xmr',
-        'HOST': '82.112.236.232',
+        # 'HOST': '82.112.236.232',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
