@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-y(g2*7o5b97#$ywih+k8ve-v2+c)b8jonqw+2w0^tt*b=3b-hu
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['tech-iitb.org','www.tech-iitb.org','localhost']
+ALLOWED_HOSTS = [' https://www.tech-iitb.org', 'tech-iitb.org','www.tech-iitb.org','localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'gunicorn',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [  
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
