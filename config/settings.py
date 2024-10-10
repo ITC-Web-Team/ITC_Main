@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'compressor',
     'config',
     'gunicorn',
+    'storages',
 ]
 
 MIDDLEWARE = [  
@@ -55,13 +56,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-DATABASES = {
-    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mainwebsite',
         'USER': 'postgres',
@@ -70,6 +64,23 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = 'ZXjMyffTHlcmLZ43nX63'
+AWS_SECRET_ACCESS_KEY = 'tcrUkUr9k4BXXhzBebeBmdWEZzn9yPN5eHOM5NCe'
+AWS_STORAGE_BUCKET_NAME = 'itcmain'  # E.g., 'media'
+AWS_S3_ENDPOINT_URL = 'https://files.tech-iitb.org'  # Your custom MinIO endpoint
+AWS_S3_REGION_NAME = 'us-east-1'  # Set a default region (MinIO ignores this but it's required by boto3)
+AWS_S3_USE_SSL = True  # Use HTTPS
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',  # Cache media files for 1 day
+}
+
+# Media file settings
+MEDIA_URL = f'https://files.tech-iitb.org/{AWS_STORAGE_BUCKET_NAME}/'
+MEDIA_ROOT = ''
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -101,10 +112,6 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-MEDIA_URL = '/media/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
