@@ -2,9 +2,9 @@
 {% block title %}Achievements{% endblock %}
 
 {% block content %}
-<div class="bg-opacity-10 backdrop-blur-md shadow-lg flex w-screen xl:w-[90%] h-auto flex-col m-28 items-center">
+<div class="bg-opacity-10 backdrop-blur-md shadow-lg flex w-screen xl:w-[90%] h-auto flex-col mt-28 mx-auto items-center">
     <div class="w-full text-white">
-      <h1 class="text-6xl font-font mb-20 font-bold text-center">ACHIEVEMENTS</h1>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-font mb-20 font-bold text-center">ACHIEVEMENTS</h1>
 
         <!-- Body Filter Form -->
         <div class="flex justify-center relative mb-10">
@@ -36,15 +36,17 @@
 
         <!-- Achievements Display Section -->
         {% for year, achievements in achievements_by_year.items %}
-        <div class="mb-12">
+        <div class="mb-12 mx-8 md:mx-16">
             <h2 class="text-3xl font-bold mb-6 text-pink-500">{{ year }}</h2>
             <div class="flex flex-wrap gap-4">
                 {% for achievement in achievements %}
                 <div class="min-w-[40%] flex gap-2 bg-white bg-opacity-10 border-2 border-[rgba(255,255,255,.1)] rounded-lg shadow-lg p-6 hover:bg-pink-800 transition duration-300 ease-in-out transform hover:-translate-y-1">
-                    <div class="flex flex-col mb-4">
-                        <img class="rounded-full h-12 w-12 mr-4" src="{{ achievement.body.logo.url }}" alt="{{ achievement.body.name }} logo">
-                        <h3 class="text-xl text-center font-bold">{{ achievement.body.name }}</h3>
-                    </div>
+                    <a href="{% url 'body_detail' achievement.body.name %}" class="block transform transition duration-300 hover:scale-105">
+                        <div class="flex flex-col mb-4">
+                            <img class="rounded-full h-12 w-12 mr-4" src="{{ achievement.body.logo.url }}" alt="{{ achievement.body.name }} logo">
+                            <h3 class="text-xl text-center font-bold">{{ achievement.body.name }}</h3>
+                        </div>
+                    </a>
                     <div class="flex flex-col">
                         <h4 class="text-lg font-semibold mb-2">{{ achievement.title }}</h4>
                         <p class="text-sm text-gray-300 mb-2">{{ achievement.description }}</p>

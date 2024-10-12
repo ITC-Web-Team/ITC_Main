@@ -1,15 +1,15 @@
 {% extends '_base.html' %} {% block title %}Home{% endblock %} 
 
 {% block content%}
-<div class="flex w-full h-auto flex-col px-28 items-center">
+<div class="flex w-full flex-col px-16 sm:px-20 md:px-24 lg:px-28 items-center">
   <!-- Institute Technical Council Section -->
   <div class="flex flex-col justify-center h-full lg:h-screen w-full">
-    <p class="text-white font-font text-2xl lg:text-3xl ">
+    <p class="text-white font-font text-xl sm:text-2xl lg:text-3xl lg:pt-0 pt-8">
    Tinker | Innovate | Create
     </p>
     <!-- bold nahi ho rhaa -->
-    <h1 class="text-white font-font font-bold text-6xl pt-8 lg:text-9xl">
-      INSTITUTE <br> TECHNICAL <br> COUNCILL
+    <h1 class="text-white font-font font-bold text-5xl sm:text-6xl md:text-8xl lg:text-9xl pt-8">
+      INSTITUTE <br> TECHNICAL <br> COUNCIL
     </h1>
   </div>
 
@@ -18,7 +18,7 @@
   <div
     class="flex flex-col justify-center items-center h-full w-full"
   >
-    <h1 class="text-white font-font text-3xl lg:text-7xl p-8">ABOUT US</h1>
+    <h1 class="text-white font-font text-2xl sm:text-3xl md:text-5xl lg:text-7xl p-8">ABOUT US</h1>
 
     <!-- Gallery Carousel Section -->
     <div class="flex flex-col my-2 justify-center items-center w-full">  
@@ -58,19 +58,19 @@
       </div>
     </div>
 
-    <p class="text-white font-font text-xl px-60">
+    <p class="text-white font-font text-justify text-sm md:text-xl lg:px-40">
       The Institute Technical Council caters to the needs for everything related to tech happening in the institute. Student Tech is one of the pillars of IIT Bombay, which fosters a culture of motivating young minds to pursue innovative ideas. We make sure that your ideas are heard and help you turn these ideas into reality in every way possible.
     </p>
   </div>
 
   <!-- Work Report Section -->
-  <div class="flex flex-col justify-center items-center h-screen w-full">
-    <h1 class="text-white font-font text-7xl p-8">WORK REPORT</h1>
+  <div class="flex flex-col justify-center items-center py-4 lg:h-screen w-full">
+    <h1 class="text-white font-font text-2xl sm:text-3xl md:text-5xl lg:text-7xl lg:p-8">WORK REPORT</h1>
 
     <div class="w-full flex flex-col lg:flex-row justify-center items-center">
         {% for report in workreports %}
       <div
-        class="w-[75vw] lg:w-[28%] m-8 p-4 border border-gray-500 rounded-2xl"
+        class="w-[75vw] lg:w-[28%] m-4 md:m-8 p-4 border border-gray-500 rounded-2xl"
       >
         <a href="{{ report.url }}">
          <div class="flex flex-col items-center gap-4 m-2">

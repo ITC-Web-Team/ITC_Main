@@ -66,12 +66,15 @@
                 <img src="https://itc.gymkhana.iitb.ac.in/static/mainwebsite/ITClogoWhite.png"
                     alt="Logo.png Load Error" class="h-8 sm:ml-4 xs:ml-6" />
             </a>
-            <button class="md:block hidden text-white" id="hamburger">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <button class="lg:hidden text-white" id="hamburger">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hamburger-icon block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
-            </button>
-            <div class="flex items-center space-x-6 ml-auto xs:hidden" id="navbarNav">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cross-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>            
+            <div class="hidden lg:flex items-center space-x-6 ml-auto" id="navbarNav">
                 <div class="inline-flex shadow-sm" role="group">
                     <a href="{% url 'home' %}" class="nav-link">
                         <button type="button"
@@ -123,7 +126,7 @@
                     </a>
                 </div>
             </div>
-            <div class="hidden xs:inline relative bg-black w-full" id="mobileMenu">
+            <div class="hidden bg-black w-full absolute top-12 left-0 lg:hidden z-50 transition-all duration-300 ease-in-out opacity-95" id="mobileMenu">
                 <div class="flex flex-col items-center space-y-4 py-2">
                     <a href="{% url 'home' %}" class="nav-link">
                         <button type="button"
@@ -186,7 +189,7 @@
         <div class="flex flex-col items-center">
             <!-- <h1 class="text-white font-font text-center w-full text-xl mb-4">CONTACT US</h1> -->
             <div class="flex flex-col gap-8 item-center">
-              <div class="flex flex-row gap-4">
+              <div class="flex flex-col sm:flex-row gap-4">
                 <a class="flex gap-2" href="https://www.facebook.com/tech.iitb" target="_blank" rel="noopener noreferrer">
                   <img src="{% static 'img/facebook.svg' %}" alt="Facebook profile" />
                   <span class="text-white font-font">Facebook</span>
@@ -219,11 +222,15 @@
     <script>
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
-
+        const hamburgerIcon = document.querySelector('.hamburger-icon');
+        const crossIcon = document.querySelector('.cross-icon');
+    
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            crossIcon.classList.toggle('hidden');
         });
-    </script>
+    </script>    
     
 </body>
 
