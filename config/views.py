@@ -8,15 +8,15 @@ def home(request):
     return render(request, 'home.html', {'workreports': workreports, 'gallery': gallery})
 
 def clubs_list(request):
-    clubs = Body.objects.filter(type=0)
+    clubs = Body.objects.filter(type=0).order_by('name')
     return render(request, 'body_list.html', {'bodies': clubs , 'type': 'CLUBS'})
 
 def techteam_list(request):
-    techteam = Body.objects.filter(type=1)
+    techteam = Body.objects.filter(type=1).order_by('name')
     return render(request, 'body_list.html', {'bodies': techteam , 'type': 'TECH TEAMS'})
 
 def otherbodies_list(request):
-    otherbodies = Body.objects.filter(type=2)
+    otherbodies = Body.objects.filter(type=2).order_by('name')
     return render(request, 'body_list.html', {'bodies': otherbodies , 'type': 'OTHER BODIES'})
 
 def body_detail(request, name):
@@ -25,7 +25,7 @@ def body_detail(request, name):
     return render(request, 'body_detail.html', {'body': body, 'members': members})
 
 def portal_list(request):
-    portals = Portal.objects.all()
+    portals = Portal.objects.all().order_by('name')
     return render(request, 'portal_list.html', {'portals': portals})
 
 def achievement_list(request):
@@ -58,7 +58,7 @@ def achievement_detail(request, name):
     return render(request, 'achievement_list.html', {'achievements': achievements, 'bodylist': bodylist})
 
 def halloffame(request):
-    interiit_list = InterIIT.objects.all()
+    interiit_list = InterIIT.objects.all().order_by('title')
     problemstatements = ProblemStatements.objects.all()
     return render(request, 'halloffame.html', {'interiit_list': interiit_list, 'problemstatements': problemstatements})
 
