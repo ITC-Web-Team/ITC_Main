@@ -77,3 +77,5 @@ admin.site.register(WorkReport, WorkReportAdmin)
 admin.site.register(InterIIT, InterIITAdmin)
 admin.site.register(ProblemStatements, ProblemStatementsAdmin)
 admin.site.register(Gallery, GalleryAdmin)
+
+

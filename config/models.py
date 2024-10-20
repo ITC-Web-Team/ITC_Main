@@ -38,7 +38,7 @@ class Achievement (models.Model):
     return self.title
 
 
-#----------- Portals and TechStacks
+#----------- Portals and TechStacks 
 class Portal(models.Model):
   name = models.CharField(max_length=100)
   description = models.TextField()

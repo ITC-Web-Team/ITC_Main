@@ -1,16 +1,26 @@
+import environ
 from pathlib import Path
 import os
 
+# Initialize environment variables
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-y(g2*7o5b97#$ywih+k8ve-v2+c)b8jonqw+2w0^tt*b=3b-hu'
+environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 
-DEBUG = True
+# Secret and Debug settings
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = [' https://www.tech-iitb.org', 'tech-iitb.org','www.tech-iitb.org','localhost']
-CSRF_TRUSTED_ORIGINS = ['https://www.tech-iitb.org', 'https://tech-iitb.org']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
 
+# Installed apps
 INSTALLED_APPS = [
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -20,10 +30,10 @@ INSTALLED_APPS = [
     'compressor',
     'config',
     'gunicorn',
-    'storages',
 ]
 
-MIDDLEWARE = [  
+# Middleware settings
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -34,12 +44,14 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+# URL configuration
 ROOT_URLCONF = 'config.urls'
 
+# Template settings
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], 
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -52,36 +64,40 @@ TEMPLATES = [
     },
 ]
 
+# WSGI application
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# Database settings
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mainwebsite',
-        'USER': 'postgres',
-        'PASSWORD': 'AMe4kNLwCJdNCo0hWdn6W1tdcSykixoWfCALXaeVbpnD2J7z1OLIEjruUyqq6xmr',
-        'HOST': '82.112.236.232',
-        'PORT': '5432',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = "media/"
+MEDIA_ROOT = "media/"
 
-AWS_ACCESS_KEY_ID = 'ZXjMyffTHlcmLZ43nX63'
-AWS_SECRET_ACCESS_KEY = 'tcrUkUr9k4BXXhzBebeBmdWEZzn9yPN5eHOM5NCe'
-AWS_STORAGE_BUCKET_NAME = 'itcmain'  # E.g., 'media'
-AWS_S3_ENDPOINT_URL = 'https://files.tech-iitb.org'  # Your custom MinIO endpoint
-AWS_S3_REGION_NAME = 'us-east-1'  # Set a default region (MinIO ignores this but it's required by boto3)
-AWS_S3_USE_SSL = True  # Use HTTPS
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',  # Cache media files for 1 day
-}
+COMPRESS_ROOT = BASE_DIR / 'static'
+COMPRESS_ENABLED = True
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
 
-# Media file settings
-MEDIA_URL = f'https://files.tech-iitb.org/{AWS_STORAGE_BUCKET_NAME}/'
-MEDIA_ROOT = ''
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -97,30 +113,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Internationalization
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
+# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-COMPRESS_ROOT = BASE_DIR / 'static'
-
-COMPRESS_ENABLED = True
-
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-]
