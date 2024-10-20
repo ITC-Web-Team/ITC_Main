@@ -58,7 +58,7 @@ def achievement_detail(request, name):
     return render(request, 'achievement_list.html', {'achievements': achievements, 'bodylist': bodylist})
 
 def halloffame(request):
-    interiit_list = InterIIT.objects.all().order_by('year')
+    interiit_list = InterIIT.objects.all().order_by('year').reverse()
     problemstatements = ProblemStatements.objects.all()
     return render(request, 'halloffame.html', {'interiit_list': interiit_list, 'problemstatements': problemstatements})
 
