@@ -15,8 +15,8 @@ environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
-CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
+ALLOWED_HOSTS_ALL = True
+CSRF_TRUSTED_ORIGINS_ALL = True
 
 # Installed apps
 INSTALLED_APPS = [
