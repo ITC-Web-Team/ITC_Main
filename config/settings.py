@@ -16,7 +16,10 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS_ALL = True
+ALLOWED_HOSTS = ['*']
+
 CSRF_TRUSTED_ORIGINS_ALL = True
+CSRF_TRUSTED_ORIGINS = ['https://www.tech-iitb.org', 'https://tech-iitb.org']
 
 # Installed apps
 INSTALLED_APPS = [
