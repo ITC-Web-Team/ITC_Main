@@ -1,4 +1,5 @@
 {% extends '_base.html' %} 
+{% load static %}
 {% block title %}Hall of Fame{% endblock %} 
 
 {% block content %}
@@ -24,16 +25,15 @@
 
           <div class="flex w-full mt-4 lg:mt-10 gap-4 lg:gap-6">
             <div class="flex-col items-center">
-              <img src={% static 'assets/images/3.png' %}
-               class="w-12 lg:w-20 h-12 lg:h-20" />
+              <img src={% static 'img/3.svg' %} class="w-12 lg:w-20 h-12 lg:h-20" />
               <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ interiit.bronze }}</div>
             </div>
             <div class="flex-col items-center">
-              <img src="./assets/images/1.png" class="w-12 lg:w-20 h-12 lg:h-20" />
+              <img src={% static 'img/1.svg' %} class="w-12 lg:w-20 h-12 lg:h-20" />
               <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ interiit.gold }}</div>
             </div>
             <div class="flex-col items-center">
-              <img src="./assets/images/2.png" class="w-12 lg:w-20 h-12 lg:h-20" />
+              <img src={% static 'img/2.svg' %} class="w-12 lg:w-20 h-12 lg:h-20" />
               <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ interiit.silver }}</div>
             </div>
           </div>

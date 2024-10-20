@@ -87,6 +87,7 @@ class WorkReport(models.Model):
 
 class InterIIT(models.Model):
   logo = models.ImageField(upload_to='interiit/')
+  year = models.IntegerField(null=True)
   title = models.CharField(max_length=100)
   subtitle = models.CharField(max_length=100, blank=True)
   description = models.TextField()
