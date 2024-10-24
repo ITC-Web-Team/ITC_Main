@@ -27,7 +27,7 @@
         <div class="flex flex-col items-center text-center">
           <div class="w-28 h-28 rounded-full overflow-hidden shadow-md bg-white bg-opacity-10 transform transition-all duration-500 hover:scale-105 hover:shadow-lg">
             <img
-              src="{{ member.image.url }}" 
+              src="{% if member.photo %}{{ member.photo.url }}{% else %}https://www.w3schools.com/howto/img_avatar.png{% endif %}"
               alt="{{ member.name }} photo"
               class="w-full h-full object-cover transition-all duration-500 hover:scale-110"
             />
