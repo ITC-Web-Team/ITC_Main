@@ -60,7 +60,14 @@ def achievement_detail(request, name):
 def halloffame(request):
     interiit_list = InterIIT.objects.all().order_by('year').reverse()
     problemstatements = ProblemStatements.objects.all()
-    return render(request, 'halloffame.html', {'interiit_list': interiit_list, 'problemstatements': problemstatements})
+    data = []
+    for i in interiit_list:
+        data.append({
+            'interiit': i,
+            'problemstatements': problemstatements.filter(interiit=i)
+        } )
+
+    return render(request, 'halloffame.html', {'data': data})
 
 def contact(request):
     cabinet = Cabinet.objects.all()

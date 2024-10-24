@@ -10,31 +10,31 @@
     </h1>
   </div>
 
-  {% for interiit in interiit_list %}
+  {% for d in data %}
   <div class="rounded-lg justify-evenly w-full lg:w-[90%] mx-auto mb-8">
-    <div class="flex flex-col md:flex-row h-auto rounded-2xl bg-cover bg-center" style="background-image: url('{{ interiit.img.url }}');">
+    <div class="flex flex-col md:flex-row h-auto rounded-2xl bg-cover bg-center" style="background-image: url('{{ d.interiit.img.url }}');">
       <div class="flex bg-black bg-opacity-70 w-full md:w-1/2 p-4 lg:p-8">
         <div class="flex-col">
           <div class="flex items-center">
-            <img class="rounded-full px-2 py-1 m-3 w-24 lg:w-36" src="{{ interiit.logo.url }}" />
+            <img class="rounded-full px-2 py-1 m-3 w-24 lg:w-36" src="{{ d.interiit.logo.url }}" />
             <div class="flex-col my-auto ml-2 lg:ml-4">
-              <div class="text-white font-extrabold text-xl lg:text-3xl mb-2">{{ interiit.title }}</div>
-              <div class="text-white text-lg lg:text-2xl font-semibold">{{ interiit.subtitle}}</div>
+              <div class="text-white font-extrabold text-xl lg:text-3xl mb-2">{{ d.interiit.title }}</div>
+              <div class="text-white text-lg lg:text-2xl font-semibold">{{ d.interiit.subtitle}}</div>
             </div>
           </div>
 
           <div class="flex w-full mt-4 lg:mt-10 gap-4 lg:gap-6">
             <div class="flex-col items-center">
               <img src={% static 'img/3.svg' %} class="w-12 lg:w-20 h-12 lg:h-20" />
-              <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ interiit.bronze }}</div>
+              <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ d.interiit.bronze }}</div>
             </div>
             <div class="flex-col items-center">
               <img src={% static 'img/1.svg' %} class="w-12 lg:w-20 h-12 lg:h-20" />
-              <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ interiit.gold }}</div>
+              <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ d.interiit.gold }}</div>
             </div>
             <div class="flex-col items-center">
               <img src={% static 'img/2.svg' %} class="w-12 lg:w-20 h-12 lg:h-20" />
-              <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ interiit.silver }}</div>
+              <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ d.interiit.silver }}</div>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
       <div class="flex bg-black bg-opacity-70 w-full md:w-1/2 p-4 lg:p-8">
         <div class="flex-col">
           <div class="text-white text-sm lg:text-lg mb-4 lg:mb-8 text-justify leading-6 lg:leading-7">
-            {{ interiit.description }}
+            {{ d.interiit.description }}
           </div>
           <div class="overflow-x-auto">
             <table class="table-auto border-separate border-spacing-2 mx-auto">
@@ -54,7 +54,7 @@
                 </tr>
               </thead>
               <tbody class="bg-white text-black">
-                {% for problem in problemstatements.filter(interiit=interiit) %}
+                {% for problem in d.problemstatements %}
                 <tr class="text-sm lg:text-xl hover:bg-lime-300 transition-colors">
                   <td class="px-2 lg:px-6 py-2 text-center">{{ problem.title }}</td>
                   <td class="px-2 lg:px-6 py-2 text-center">{{ problem.position }}</td>
