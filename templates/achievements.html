@@ -43,8 +43,7 @@
                 <div class="min-w-[40%] flex gap-2 bg-white bg-opacity-10 border-2 border-[rgba(255,255,255,.1)] rounded-lg shadow-lg p-6 hover:bg-pink-800 transition duration-300 ease-in-out transform hover:-translate-y-1">
                     <a href="{% url 'body_detail' achievement.body.name %}" class="block transform transition duration-300 hover:scale-105">
                         <div class="flex flex-col mb-4">
-                            <img class="rounded-full h-12 w-12 mr-4" src="{{ achievement.body.logo.url }}" alt="{{ achievement.body.name }} logo">
-                            <h3 class="text-xl text-center font-bold">{{ achievement.body.name }}</h3>
+                            <img class="rounded-full h-20 w-20 mr-4" src="{{ achievement.body.logo.url }}" alt="{{ achievement.body.name }} logo">
                         </div>
                     </a>
                     <div class="flex flex-col">
