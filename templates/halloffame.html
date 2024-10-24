@@ -54,7 +54,7 @@
                 </tr>
               </thead>
               <tbody class="bg-white text-black">
-                {% for problem in problemstatements %}
+                {% for problem in problemstatements.filter(interiit=interiit) %}
                 <tr class="text-sm lg:text-xl hover:bg-lime-300 transition-colors">
                   <td class="px-2 lg:px-6 py-2 text-center">{{ problem.title }}</td>
                   <td class="px-2 lg:px-6 py-2 text-center">{{ problem.position }}</td>
