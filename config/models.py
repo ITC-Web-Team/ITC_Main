@@ -3,7 +3,7 @@ from django.db import models
 #----------- Clubs, Tech Team and Other Bodies
 class Body(models.Model):
   name = models.CharField(max_length=100)
-  type = models.IntegerField(choices=[(0, 'CLUBS'), (1, 'TECH TEAM'), (2, 'OTHER BODIES')])
+  type = models.IntegerField(choices=[(0, 'CLUBS'), (1, 'TECH TEAM'), (2, 'COMMUNITY')])
   short_description = models.CharField(max_length=100)
   description = models.TextField()
   contact_email = models.EmailField()

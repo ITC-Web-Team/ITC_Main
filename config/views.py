@@ -17,7 +17,7 @@ def techteam_list(request):
 
 def otherbodies_list(request):
     otherbodies = Body.objects.filter(type=2).order_by('name')
-    return render(request, 'body_list.html', {'bodies': otherbodies , 'type': 'OTHER BODIES'})
+    return render(request, 'body_list.html', {'bodies': otherbodies , 'type': 'COMMUNITIES'})
 
 def body_detail(request, name):
     body = get_object_or_404(Body, name=name)
