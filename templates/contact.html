@@ -1,5 +1,5 @@
 {% extends '_base.html' %}
-
+{% load static %}
 {% block title %}Contact Us{% endblock %}
 {% block description %}Reach out to the IITB Tech Council for inquiries and collaborations{% endblock %}
 {% block og_title %}Contact Us | IITB Tech Council{% endblock %}
@@ -12,12 +12,18 @@
     {% for member in cabinet %}
     <div class="w-[90vw] sm:w-[60vw] lg:w-[28%] m-4 p-4 border border-gray-500 rounded-2xl">
       <div class="flex flex-col md:flex-row items-center gap-4 m-2">
+        {% if member.image %}
         <img class="rounded-full w-20 h-20 md:w-28 md:h-28" src="{{ member.image.url }}" alt="Profile picture of {{ member.name }}" />
+        {% endif %}
+        {% if member.name %}
         <span class="text-white text-xl md:text-2xl font-black">{{ member.name }}</span>
+        {% endif %}
       </div>
       <hr class="border-gray-500" />
       <div class="m-2">
+        {% if member.position %}
         <p class="text-white">Position: {{ member.position }}</p>
+        {% endif %}
         {% if member.email %}
         <p class="text-white">Email: <a href="mailto:{{ member.email }}" class="text-blue-400">{{ member.email }}</a></p>
         {% endif %}
