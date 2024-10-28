@@ -8,42 +8,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="{% static 'img/ITClogoWhite.png' %}" type="image/png">
-    <meta name="description" content="Welcome to the IITB Tech Council. Explore our clubs, tech teams, other bodies, portals, achievements, and hall of fame. Contact us for more information.">
+    
+    <!-- Dynamic Meta Tags -->
+    <meta name="description" content="{% block description %}Explore IITB Tech Council{% endblock %}">
     <meta name="keywords" content="IITB, Tech Council, Clubs, Tech Teams, Portals, Achievements, Hall of Fame, Contact">
     <meta name="author" content="IITB Tech Council">
-    <meta property="og:title" content="IITB Tech Council">
-    <meta property="og:description" content="Explore the IITB Tech Council's clubs, tech teams, other bodies, portals, achievements, and hall of fame.">
-    <meta property="og:image" content="{% static 'img/ITClogoWhite.png' %}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% block og_title %}IITB Tech Council{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Explore the IITB Tech Council's activities{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'img/ITClogoWhite.png' %}{% endblock %}">
     <meta property="og:url" content="https://tech-iitb.org">
+
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="IITB Tech Council">
-    <meta name="twitter:description" content="Explore the IITB Tech Council's clubs, tech teams, other bodies, portals, achievements, and hall of fame.">
-    <meta name="twitter:image" content="{% static 'img/ITClogoWhite.png' %}">
-    <title>ITC | {% block title %}IITB Tech Council{% endblock %}</title>
+    <meta name="twitter:title" content="{% block twitter_title %}IITB Tech Council{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Explore the IITB Tech Council's activities{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{% static 'img/ITClogoWhite.png' %}{% endblock %}">
+    
+    <title>{% block title %}IITB Tech Council{% endblock %}</title>
 
+    <!-- Tailwind CSS -->
     <link rel="stylesheet" href="{% static 'src/output.css' %}" />
-    {% comment %} <link rel="stylesheet" href="{% static 'src/styles.css' %}" /> {% endcomment %}
     <script src="https://cdn.tailwindcss.com"></script>
-
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    screens: {
-                        xs: { max: "770px" },
-                        nv: { min: "770px" },
-                    },
-                    
-                },
-            },
-        };
-    </script>
+    
     <style>
-        .hover-underline-animation {
-            position: relative;
-            display: inline-block;
-        }
+        /* Hover underline animation */
         .hover-underline-animation::before,
         .hover-underline-animation::after {
             content: '';
@@ -56,14 +46,6 @@
             transform: scaleX(0);
             transition: transform 0.5s ease;
         }
-        .hover-underline-animation::before {
-            top: 0;
-            transform-origin: left;
-        }
-        .hover-underline-animation::after {
-            bottom: 0;
-            transform-origin: right;
-        }
         .hover-underline-animation:hover::before,
         .hover-underline-animation:hover::after {
             transform: scaleX(0.85);
@@ -74,9 +56,8 @@
 <body class="bg-black">
     <nav class="text-white bg-black sticky top-0 h-12 pt-2 z-50 border-b border-white">
         <div class="w-11/12 mx-auto flex justify-between items-center text-md text-thin">
-            <a href="{% url 'home' %}" class="flex items-center">
-                <img src="https://itc.gymkhana.iitb.ac.in/static/mainwebsite/ITClogoWhite.png"
-                    alt="Logo.png Load Error" class="h-8 sm:ml-4 xs:ml-6" />
+            <a href="{% url 'home' %}">
+                <img src="https://itc.gymkhana.iitb.ac.in/static/mainwebsite/ITClogoWhite.png" alt="IITB Tech Council Logo" class="h-8 sm:ml-4 xs:ml-6" loading="lazy" />
             </a>
             <button class="lg:hidden text-white" id="hamburger">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hamburger-icon block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -229,7 +210,28 @@
           </div>
         <p class="mt-8">Developed by ITC Web Team with ❤️</p>
     </footer>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6E0KHTTEW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'G-G6E0KHTTEW');
+    </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "IITB Tech Council",
+          "url": "https://tech-iitb.org",
+          "logo": "https://tech-iitb.org/static/img/ITClogoWhite.png",
+          "sameAs": [
+            "https://www.facebook.com/tech.iitb",
+            "https://www.instagram.com/tech.iitb",
+            "https://twitter.com/tech_iitb"
+          ]
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <script>
         const hamburger = document.getElementById('hamburger');

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'compressor',
     'config',
     'gunicorn',
+    'django.contrib.sitemaps',
 ]
 
 # Middleware settings
@@ -124,3 +125,9 @@ USE_TZ = True
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+COMPRESS_ENABLED = True  # Enable compression
+COMPRESS_OFFLINE = True  # This allows pre-compression during production build
+COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter']
+COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']

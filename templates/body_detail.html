@@ -1,7 +1,11 @@
 {% extends '_base.html' %}
 {% load static %}
-
-{% block title %}{{ body.name }}{% endblock %}
+{% block title %}{{ body.name }} | IITB Tech Council{% endblock %}
+{% block description %}Learn more about {{ body.name }} at IITB Tech Council{% endblock %}
+{% block og_title %}{{ body.name }} | IITB Tech Council{% endblock %}
+{% block og_description %}Discover the achievements and activities of {{ body.name }} at IITB Tech Council{% endblock %}
+{% block twitter_title %}{{ body.name }} | IITB Tech Council{% endblock %}
+{% block twitter_description %}Explore the work of {{ body.name }} at IITB Tech Council{% endblock %}
 
 {% block content %}
 <div class="w-11/12 mx-auto mt-20 mb-10">
