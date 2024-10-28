@@ -33,7 +33,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Hover underline animation */
+        .hover-underline-animation {
+            position: relative;
+            display: inline-block;
+        }
         .hover-underline-animation::before,
         .hover-underline-animation::after {
             content: '';
@@ -45,6 +48,14 @@
             left: 0;
             transform: scaleX(0);
             transition: transform 0.5s ease;
+        }
+        .hover-underline-animation::before {
+            top: 0;
+            transform-origin: left;
+        }
+        .hover-underline-animation::after {
+            bottom: 0;
+            transform-origin: right;
         }
         .hover-underline-animation:hover::before,
         .hover-underline-animation:hover::after {
