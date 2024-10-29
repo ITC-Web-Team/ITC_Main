@@ -18,7 +18,7 @@ def robots_txt(request):
 
 
 urlpatterns = [
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap' ),
     path('robots.txt', robots_txt),
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
