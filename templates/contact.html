@@ -7,42 +7,38 @@
 
 {% block content %}
 <div class="flex w-screen xl:w-[90%] h-auto flex-col mt-28 mx-auto items-center">
-  <h1 class="text-white font-font text-4xl md:text-6xl mb-10">CABINET</h1>
+  <h1 class=" font-font text-4xl md:text-6xl mb-10">CABINET</h1>
   <div class="w-full flex flex-row flex-wrap items-start justify-center">
     {% for member in cabinet %}
-    <div class="w-[90vw] sm:w-[60vw] lg:w-[28%] m-4 p-4 border border-gray-500 rounded-2xl">
+    <div class="w-[90vw] sm:w-[60vw] lg:w-[28%] m-4 p-6 border border-gray-600 rounded-2xl transition-transform transform hover:scale-105">
       <div class="flex flex-col md:flex-row items-center gap-4 m-2">
         {% if member.image %}
-        <img class="rounded-full w-20 h-20 md:w-28 md:h-28" src="{{ member.image.url }}" alt="Profile picture of {{ member.name }}" />
+        <img class="rounded-full w-28 h-28 shadow-lg hover:scale-110 transition-transform duration-500" src="{{ member.image.url }}" alt="Profile picture of {{ member.name }}" />
         {% endif %}
         {% if member.name %}
-        <span class="text-white text-xl md:text-2xl font-black">{{ member.name }}</span>
+        <span class=" text-2xl font-bold">{{ member.name }}</span>
         {% endif %}
       </div>
-      <hr class="border-gray-500" />
+      <hr class="border-gray-500 my-4" />
       <div class="m-2">
         {% if member.position %}
-        <p class="text-white">Position: {{ member.position }}</p>
+        <p class="text-gray-300">Position: {{ member.position }}</p>
         {% endif %}
         {% if member.email %}
-        <p class="text-white">Email: <a href="mailto:{{ member.email }}" class="text-blue-400">{{ member.email }}</a></p>
+        <p class="text-gray-300">Email: <a href="mailto:{{ member.email }}" class="text-blue-400 hover:underline">{{ member.email }}</a></p>
         {% endif %}
         {% if member.phone %}
-        <p class="text-white">Phone: <a href="tel:{{ member.phone }}" class="text-blue-400">{{ member.phone }}</a></p>
+        <p class="text-gray-300">Phone: <a href="tel:{{ member.phone }}" class="text-blue-400 hover:underline">{{ member.phone }}</a></p>
         {% endif %}
       </div>
-      <hr class="border-gray-500" />
-      <div class="flex">
-        <div class="w-8 h-8 md:w-10 md:h-10 border border-gray-500 rounded m-2">
-            <a href="https://www.linkedin.com/in/vaishnavi-rajput-iitb">
-                <img src="{% static 'img/linkedin.png' %}" alt="LinkedIn">
-            </a>
-        </div>
-        <div class="w-8 h-8 md:w-10 md:h-10 border border-gray-500 rounded m-2">
-            <a href="https://www.instagram.com/basketball_iitb/">
-                <img src="{% static 'img/instagram.png' %}" alt="Instagram">
-            </a>
-        </div>
+      <hr class="border-gray-500 my-4" />
+      <div class="flex gap-4">
+        <a href="https://www.linkedin.com/in/vaishnavi-rajput-iitb" class="transition-transform transform hover:scale-110">
+            <img src="{% static 'img/linkedin.png' %}" alt="LinkedIn" class="w-8 h-8 md:w-10 md:h-10">
+        </a>
+        <a href="https://www.instagram.com/basketball_iitb/" class="transition-transform transform hover:scale-110">
+            <img src="{% static 'img/instagram.png' %}" alt="Instagram" class="w-8 h-8 md:w-10 md:h-10">
+        </a>
       </div>
     </div>
     {% endfor %}
@@ -51,7 +47,7 @@
   <div class="flex flex-col items-center mt-12 lg:mt-20">
     <div class="flex flex-row items-center gap-2">
       <img class="w-5 h-5 md:w-7 md:h-7" src="{% static 'img/map-pin.svg' %}" alt="Map pin" />
-      <h1 class="text-white font-font text-lg md:text-xl">Where you can find us?</h1>
+      <h1 class=" font-font text-lg md:text-xl">Where you can find us?</h1>
     </div>
     <iframe
       class="mt-6 w-[90vw] sm:w-[80vw] lg:w-[600px] h-[300px] sm:h-[400px]"

@@ -8,92 +8,96 @@
 {% block twitter_description %}Explore the Institute Technical Council's initiatives{% endblock %}
 
 {% block content %}
-<div class="flex w-full flex-col px-16 sm:px-20 md:px-24 lg:px-28 items-center">
-  <!-- Institute Technical Council Section -->
-  <div class="flex flex-col justify-center h-full lg:h-screen w-full">
-    <p class="text-white font-font text-xl sm:text-2xl lg:text-3xl lg:pt-0 pt-8">
-   Tinker | Innovate | Create
+<div class="flex w-full flex-col px-4 sm:px-6 md:px-8 lg:px-16 items-center mx-auto">
+  
+  <!-- Hero Section with Call to Action -->
+  <div class="flex flex-col justify-center h-full lg:h-screen w-full text-center">
+    <p class="font-font text-lg sm:text-xl lg:text-2xl text-gray-300 lg:pt-0 pt-8">
+      Tinker | Innovate | Create
     </p>
-    <!-- bold nahi ho rhaa -->
-    <h1 class="text-white font-font font-bold text-5xl sm:text-6xl md:text-8xl lg:text-9xl pt-8">
+    <h1 class="font-font font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl pt-8 text-white">
       INSTITUTE <br> TECHNICAL <br> COUNCIL
     </h1>
+    <div class="flex gap-4 justify-center mt-8 flex-wrap">
+      <a href="{% url 'club_list' %}" class="px-6 py-3 lg:px-8 lg:py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Explore Clubs</a>
+      <a href="{% url 'techteam_list' %}" class="px-6 py-3 lg:px-8 lg:py-4 bg-transparent text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition">Explore Tech Teams</a>
+      <a href="{% url 'otherbodies_list' %}" class="px-6 py-3 lg:px-8 lg:py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Explore Communities</a>
+    </div>
   </div>
 
+  <div id="about" class="flex flex-col justify-center items-center h-full w-full py-16">
+    <h1 class="font-font text-xl sm:text-2xl md:text-4xl lg:text-5xl p-8 text-white">ABOUT US</h1>
 
-  <!-- About Us Section -->
-  <div
-    class="flex flex-col justify-center items-center h-full w-full"
-  >
-    <h1 class="text-white font-font text-2xl sm:text-3xl md:text-5xl lg:text-7xl p-8">ABOUT US</h1>
-
-    <!-- Gallery Carousel Section -->
-    <div class="flex flex-col my-2 justify-center items-center w-full">  
-      <div
-        id="carouselExample"
-        class="relative w-full lg:w-[60vw]"
-        data-carousel="slide"
-      >
-        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-          {% for image in gallery %}
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img
-              src="{{ image.image.url }}"
-              class="block w-full h-full object-cover"
-              alt="{{ image.title }}"
-            />
-            <span class="absolute bottom-5 left-5 text-white text-2xl font-black bg-black bg-opacity-50 p-2 rounded-lg"
-              >{{ image.title }}</span
-            >
+    <div class="lg:flex lg:justify-center lg:gap-10 items-start w-full lg:px-10">
+      <div class="lg:w-1/2">
+        <p class="font-font text-justify text-sm md:text-lg lg:text-xl text-gray-300">
+          The Institute Technical Council (ITC) at IIT Bombay is at the forefront of nurturing student innovation, technical skills, and leadership. We provide students with the resources and guidance needed to bring their ideas to life through a wide range of technical clubs, teams, and events.
+        </p>
+        <p class="font-font text-justify text-sm md:text-lg lg:text-xl text-gray-300 mt-4">
+          With a focus on fostering collaboration and creativity, ITC plays a pivotal role in organizing technical workshops, competitions, and projects. From aeromodelling to artificial intelligence, the council caters to a diverse set of technical interests, making it a hub for student-led innovation.
+        </p>
+      </div>
+      <!-- About Us Carousel -->
+      <div class="lg:w-1/2 mt-8 lg:mt-0">
+        <div id="carouselExample" class="relative w-full" data-carousel="slide">
+          <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+            {% for image in gallery %}
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img src="{{ image.image.url }}" class="block w-full h-full object-cover" alt="{{ image.title }}" />
+              <span class="absolute bottom-5 left-5 text-2xl font-black bg-black bg-opacity-50 p-2 rounded-lg">{{ image.title }}</span>
+            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
-        </div>
   
-        <div
-          class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2"
-        >
-          {% for i in gallery %}
-          <button
-            type="button"
-            class="w-3 h-3 rounded-full"
-            aria-current="false"
-            aria-label="Slide {{ forloop.counter }}"
-            data-carousel-slide-to="{{ forloop.counter0 }}"
-          ></button>
-          {% endfor %}
+          <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+            {% for i in gallery %}
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide {{ forloop.counter }}" data-carousel-slide-to="{{ forloop.counter0 }}"></button>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <p class="text-white font-font text-justify text-sm md:text-xl lg:px-40">
-      The Institute Technical Council caters to the needs for everything related to tech happening in the institute. Student Tech is one of the pillars of IIT Bombay, which fosters a culture of motivating young minds to pursue innovative ideas. We make sure that your ideas are heard and help you turn these ideas into reality in every way possible.
-    </p>
+  <!-- Featured Stats Section -->
+  <div class="w-full py-16 bg-gray-900 text-white text-center max-w-[1200px] mx-auto">
+    <h2 class="text-3xl font-bold mb-8">Our Impact</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-8">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-4xl font-bold">10+</h3>
+        <p>Tech Teams</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-4xl font-bold">100+</h3>
+        <p>Yearly Events</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-4xl font-bold">200+</h3>
+        <p>Summer Projects</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-4xl font-bold">10,000+</h3>
+        <p>Students Catered</p>
+      </div>
+    </div>
   </div>
 
   <!-- Work Report Section -->
-  <div class="flex flex-col justify-center items-center py-4 lg:h-screen w-full">
-    <h1 class="text-white font-font text-2xl sm:text-3xl md:text-5xl lg:text-7xl lg:p-8">WORK REPORT</h1>
-
-    <div class="w-full flex flex-col lg:flex-row justify-center items-center">
-        {% for report in workreports %}
-      <div
-        class="w-[75vw] lg:w-[28%] m-4 md:m-8 p-4 border border-gray-500 rounded-2xl"
-      >
+  <div id="workreport" class="flex flex-col justify-center items-center py-16 w-full max-w-[1200px] mx-auto">
+    <h1 class="font-font text-xl sm:text-2xl md:text-4xl lg:text-5xl lg:p-8 text-white">WORK REPORT</h1>
+    <div class="w-full flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-8">
+      {% for report in workreports %}
+      <div class="w-[90vw] sm:w-[70vw] lg:w-[28%] m-4 md:m-6 p-4 bg-gray-800 border border-gray-500 rounded-2xl shadow-lg hover:scale-105 transition-transform">
         <a href="{{ report.url }}">
-         <div class="flex flex-col items-center gap-4 m-2">
-            <img
-              class="w-full h-20 object-cover"
-              src="{{ report.image.url }}"
-              alt="Work Report Image"
-            />
-            <span class="text-white text-2xl font-black"
-              >{{ report.title }}</span
-            >
+          <div class="flex flex-col items-center gap-4 m-2">
+            <img class="w-full h-24 object-cover" src="{{ report.image.url }}" alt="Work Report Image" />
+            <span class="text-2xl font-black text-white">{{ report.title }}</span>
           </div>
         </a>
       </div>
       {% endfor %}
     </div>
   </div>
+  
 </div>
 {% endblock %}

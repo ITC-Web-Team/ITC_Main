@@ -17,7 +17,7 @@
           alt="{{ body.name }} Logo"
           class="h-24 w-24 rounded-full mr-6 shadow-lg transform transition-all duration-300 hover:scale-110"
         />
-        <h1 class="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-wide">{{ body.name }}</h1>
+        <h1 class="text-2xl sm:text-4xl md:text-6xl font-extrabold  tracking-wide">{{ body.name }}</h1>
       </div>
       <p class="text-lg text-gray-300">{{ body.description }}</p>
     </div>
@@ -53,7 +53,7 @@
       </p>
       <div class="flex space-x-3 sm:space-x-6 mt-4">
         {% if body.website %}
-        <a href="{{ body.website }}" class="transition-all duration-300 hover:bg-gray-400 text-white text-lg font-semibold p-2 px-4 rounded-xl bg-gray-700">
+        <a href="{{ body.website }}" class="transition-all duration-300 hover:bg-gray-400  text-lg font-semibold p-2 px-4 rounded-xl bg-gray-700">
           Website
         </a>
         {% endif %}

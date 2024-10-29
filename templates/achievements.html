@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="bg-opacity-10 backdrop-blur-md shadow-lg flex w-screen xl:w-[90%] h-auto flex-col mt-28 mx-auto items-center">
-    <div class="w-full text-white">
+    <div class="w-full ">
       <h1 class="text-3xl md:text-5xl lg:text-6xl font-font mb-20 font-bold text-center">ACHIEVEMENTS</h1>
 
         <!-- Body Filter Form -->
@@ -16,7 +16,7 @@
             <div class="w-full max-w-xs bg-slate-400 border-2 border-slate-800 rounded-lg bg-opacity-20 relative mb-10">
                 <form id="filterForm" action="{% url 'achievement_list' %}" method="get">
                     <input type="hidden" id="selectedBody" name="body" value="{{ selected_body }}">
-                    <button id="dropdownButton" class="w-full text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between" type="button">
+                    <button id="dropdownButton" class="w-full  bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between" type="button">
                         <span id="dropdownText">{% if selected_body %}{{ selected_body }}{% else %}All Bodies{% endif %}</span>
                         <svg class="w-4 h-4 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -25,7 +25,7 @@
                 </form>
 
                 <div id="dropdown" class="absolute top-full z-10 hidden w-full bg-slate-700 border border-slate-600 rounded-lg shadow-lg">
-                    <ul class="py-2 text-sm text-white">
+                    <ul class="py-2 text-sm ">
                         <li>
                             <a href="#" class="block px-4 py-2 hover:bg-pink-800" data-value="">All Bodies</a>
                         </li>
