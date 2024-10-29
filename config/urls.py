@@ -12,7 +12,7 @@ sitemaps = {
 }
 
 def robots_txt(request):
-    content = "User-agent: *\nDisallow: /admin/\nSitemap: https://yourdomain.com/sitemap.xml"
+    content = "User-agent: *\nDisallow: /admin/\nSitemap: https://tech-iitb.org/sitemap.xml"
     return HttpResponse(content, content_type="text/plain")
 
 
@@ -22,8 +22,8 @@ urlpatterns = [
     path('robots.txt', robots_txt),
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
-    path('clubs', clubs_list, name='club_list'),
-    path('tectteam/', techteam_list, name='techteam_list'),
+    path('clubs/', clubs_list, name='club_list'),
+    path('techteam/', techteam_list, name='techteam_list'),
     path('otherbodies/', otherbodies_list, name='otherbodies_list'),
     path('bodies/<str:name>/', body_detail, name='body_detail'),
     path('portals/', portal_list, name='portal_list'),
