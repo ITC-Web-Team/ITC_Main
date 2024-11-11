@@ -33,12 +33,18 @@
       </div>
       <hr class="border-gray-500 my-4" />
       <div class="flex gap-4">
-        <a href="https://www.linkedin.com/in/vaishnavi-rajput-iitb" class="transition-transform transform hover:scale-110">
-            <img src="{% static 'img/linkedin.png' %}" alt="LinkedIn" class="w-8 h-8 md:w-10 md:h-10">
-        </a>
-        <a href="https://www.instagram.com/basketball_iitb/" class="transition-transform transform hover:scale-110">
-            <img src="{% static 'img/instagram.png' %}" alt="Instagram" class="w-8 h-8 md:w-10 md:h-10">
-        </a>
+        {% if member.linkedin %}
+          <a href={{ member.linkedin }} 
+          class="transition-transform transform hover:scale-110">
+              <img src="{% static 'img/linkedin.png' %}" alt="LinkedIn" class="w-8 h-8 md:w-10 md:h-10">
+          </a>
+        {% endif %}
+        {% if member.instagram %}
+          <a href={{ member.instagram }} 
+          class="transition-transform transform hover:scale-110">
+              <img src="{% static 'img/instagram.png' %}" alt="Instagram" class="w-8 h-8 md:w-10 md:h-10">
+          </a>
+        {% endif %}
       </div>
     </div>
     {% endfor %}
