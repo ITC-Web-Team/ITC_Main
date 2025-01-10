@@ -1,77 +1,152 @@
-{% extends '_base.html' %}
-{% load static %}
-{% block title %}Hall of Fame | IITB Tech Council{% endblock %}
-{% block description %}Explore the achievements of IITB Tech Council in the Hall of Fame{% endblock %}
-{% block og_title %}Hall of Fame | IITB Tech Council{% endblock %}
-{% block og_description %}Celebrate the outstanding achievements of IITB Tech Council{% endblock %}
-{% block twitter_title %}Hall of Fame | IITB Tech Council{% endblock %}
-{% block twitter_description %}Learn more about the IITB Tech Council's successes{% endblock %}
-
-{% block content %}
-<div class="bg-opacity-10 backdrop-blur-md shadow-lg flex w-[90%] lg:w-[75%] h-auto flex-col mt-28 mx-auto items-center">
-  <div class="w-full text-white">
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-font mb-12 lg:mb-20 font-bold text-center">
-        HALL OF FAME
+{% extends '_base.html' %} {% load static %} {% block title %}Hall of Fame |
+IITB Tech Council{% endblock %} {% block content %}
+<div
+  class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+    <!-- Header -->
+    <h1
+      class="text-4xl md:text-6xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"
+    >
+      Hall of Fame
     </h1>
-  </div>
 
-  {% for d in data %}
-  <div class="rounded-lg justify-evenly w-full lg:w-[90%] mx-auto mb-8">
-    <div class="flex flex-col md:flex-row h-auto rounded-2xl bg-cover bg-center" style="background-image: url('{{ d.interiit.img.url }}');">
-      <div class="flex bg-black bg-opacity-70 w-full md:w-1/2 p-4 lg:p-8">
-        <div class="flex-col">
-          <div class="flex items-center">
-            <img class="rounded-full px-2 py-1 m-3 w-24 lg:w-36" src="{{ d.interiit.logo.url }}" />
-            <div class="flex-col my-auto ml-2 lg:ml-4">
-              <div class="text-white font-extrabold text-xl lg:text-3xl mb-2">{{ d.interiit.title }}</div>
-              <div class="text-white text-lg lg:text-2xl font-semibold">{{ d.interiit.subtitle}}</div>
-            </div>
+    <!-- Cards Grid -->
+    {% for d in data %}
+    <div class="mb-12">
+      <div
+        class="bg-slate-800/50 backdrop-blur-md rounded-2xl border border-slate-700/50 overflow-hidden"
+      >
+        <div class="relative h-full">
+          <!-- Background Image with Overlay -->
+          <div
+            class="absolute inset-0 bg-cover bg-center"
+            style="background-image: url('{{ d.interiit.img.url }}');"
+          >
+            <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
           </div>
 
-          <div class="flex w-full mt-4 lg:mt-10 gap-4 lg:gap-6">
-            <div class="flex-col items-center">
-              <img src={% static 'img/3.svg' %} class="w-12 lg:w-20 h-12 lg:h-20" />
-              <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ d.interiit.bronze }}</div>
+          <!-- Content -->
+          <div class="relative flex flex-col md:flex-row">
+            <!-- Left Section -->
+            <div class="w-full md:w-1/2 p-6 lg:p-8">
+              <div class="flex items-center gap-4 mb-8">
+                <img
+                  class="w-24 lg:w-32 h-24 lg:h-32 rounded-2xl object-cover"
+                  src="{{ d.interiit.logo.url }}"
+                  alt="Logo"
+                />
+                <div>
+                  <h2 class="text-2xl lg:text-3xl font-bold text-white mb-2">
+                    {{ d.interiit.title }}
+                  </h2>
+                  <p class="text-lg lg:text-xl text-gray-300">
+                    {{ d.interiit.subtitle}}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Medals Grid -->
+              <div class="grid grid-cols-3 gap-6 mt-8">
+                <!-- Bronze -->
+                <div class="text-center group">
+                  <div
+                    class="relative w-16 lg:w-20 h-16 lg:h-20 mx-auto transform transition-transform group-hover:scale-110"
+                  >
+                    <img
+                      src="{% static 'img/3.svg' %}"
+                      class="w-full h-full"
+                      alt="Bronze Medal"
+                    />
+                  </div>
+                  <p
+                    class="text-4xl lg:text-6xl font-bold mt-4 bg-gradient-to-r from-amber-700 to-yellow-600 text-transparent bg-clip-text"
+                  >
+                    {{ d.interiit.bronze }}
+                  </p>
+                </div>
+                <!-- Gold -->
+                <div class="text-center group">
+                  <div
+                    class="relative w-16 lg:w-20 h-16 lg:h-20 mx-auto transform transition-transform group-hover:scale-110"
+                  >
+                    <img
+                      src="{% static 'img/1.svg' %}"
+                      class="w-full h-full"
+                      alt="Gold Medal"
+                    />
+                  </div>
+                  <p
+                    class="text-4xl lg:text-6xl font-bold mt-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-transparent bg-clip-text"
+                  >
+                    {{ d.interiit.gold }}
+                  </p>
+                </div>
+                <!-- Silver -->
+                <div class="text-center group">
+                  <div
+                    class="relative w-16 lg:w-20 h-16 lg:h-20 mx-auto transform transition-transform group-hover:scale-110"
+                  >
+                    <img
+                      src="{% static 'img/2.svg' %}"
+                      class="w-full h-full"
+                      alt="Silver Medal"
+                    />
+                  </div>
+                  <p
+                    class="text-4xl lg:text-6xl font-bold mt-4 bg-gradient-to-r from-gray-300 to-gray-400 text-transparent bg-clip-text"
+                  >
+                    {{ d.interiit.silver }}
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="flex-col items-center">
-              <img src={% static 'img/1.svg' %} class="w-12 lg:w-20 h-12 lg:h-20" />
-              <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ d.interiit.gold }}</div>
+
+            <!-- Right Section -->
+            <div class="w-full md:w-1/2 p-6 lg:p-8">
+              <p class="text-gray-300 text-lg mb-8">
+                {{ d.interiit.description }}
+              </p>
+
+              <!-- Problem Statements Table -->
+              <div
+                class="overflow-hidden rounded-xl border border-slate-700/50"
+              >
+                <table class="w-full">
+                  <thead class="bg-slate-700/50">
+                    <tr>
+                      <th
+                        class="px-4 py-3 text-left text-sm font-semibold text-gray-200"
+                      >
+                        Company
+                      </th>
+                      <th
+                        class="px-4 py-3 text-left text-sm font-semibold text-gray-200"
+                      >
+                        Position
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-700/50">
+                    {% for problem in d.problemstatements %}
+                    <tr class="hover:bg-slate-700/30 transition-colors">
+                      <td class="px-4 py-3 text-sm text-gray-300">
+                        {{ problem.title }}
+                      </td>
+                      <td class="px-4 py-3 text-sm text-gray-300">
+                        {{ problem.position }}
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="flex-col items-center">
-              <img src={% static 'img/2.svg' %} class="w-12 lg:w-20 h-12 lg:h-20" />
-              <div class="text-white text-center text-4xl lg:text-7xl font-extrabold mt-2 lg:mt-4">{{ d.interiit.silver }}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="flex bg-black bg-opacity-70 w-full md:w-1/2 p-4 lg:p-8">
-        <div class="flex-col">
-          <div class="text-white text-sm lg:text-lg mb-4 lg:mb-8 text-justify leading-6 lg:leading-7">
-            {{ d.interiit.description }}
-          </div>
-          <div class="overflow-x-auto">
-            <table class="table-auto border-separate border-spacing-2 mx-auto">
-              <thead class="bg-lime-300 text-black">
-                <tr class="text-sm lg:text-2xl">
-                  <th class="px-2 lg:px-6 py-2">Company</th>
-                  <th class="px-2 lg:px-6 py-2">Position</th>
-                </tr>
-              </thead>
-              <tbody class="bg-white text-black">
-                {% for problem in d.problemstatements %}
-                <tr class="text-sm lg:text-xl hover:bg-lime-300 transition-colors">
-                  <td class="px-2 lg:px-6 py-2 text-center">{{ problem.title }}</td>
-                  <td class="px-2 lg:px-6 py-2 text-center">{{ problem.position }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>  
           </div>
         </div>
       </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
 {% endblock %}

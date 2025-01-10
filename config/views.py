@@ -5,7 +5,33 @@ from collections import defaultdict
 def home(request):
     workreports = WorkReport.objects.all().order_by('-title').reverse()
     gallery = Gallery.objects.all()
-    return render(request, 'home.html', {'workreports': workreports, 'gallery': gallery})
+    
+    # Get all bodies with logos
+    clubs = Body.objects.filter(type=0, logo__isnull=False)
+    techteams = Body.objects.filter(type=1, logo__isnull=False)
+    communities = Body.objects.filter(type=2, logo__isnull=False)
+    
+    # Get recent achievements (last 6)
+    recent_achievements = Achievement.objects.all().order_by('-date')[:6]
+    
+    # Get latest Inter IIT results
+    latest_interiit = InterIIT.objects.all().order_by('-year').first()
+    if latest_interiit:
+        latest_problemstatements = ProblemStatements.objects.filter(interiit=latest_interiit)
+    else:
+        latest_problemstatements = None
+    
+    context = {
+        'workreports': workreports,
+        'gallery': gallery,
+        'clubs': clubs,
+        'techteams': techteams,
+        'communities': communities,
+        'recent_achievements': recent_achievements,
+        'latest_interiit': latest_interiit,
+        'latest_problemstatements': latest_problemstatements,
+    }
+    return render(request, 'home.html', context)
 
 def clubs_list(request):
     clubs = Body.objects.filter(type=0).order_by('name')

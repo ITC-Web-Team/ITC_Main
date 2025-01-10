@@ -1,30 +1,37 @@
-{% extends '_base.html' %}
-{% block title %}{{ type }} | IITB Tech Council{% endblock %}
-{% block description %}Explore {{ type }} managed by IITB Tech Council{% endblock %}
-{% block og_title %}{{ type }} | IITB Tech Council{% endblock %}
-{% block twitter_title %}{{ type }} | IITB Tech Council{% endblock %}
-{% block twitter_description %}Learn more about {{ type }} under IITB Tech Council{% endblock %}
+{% extends '_base.html' %} {% block title %}{{ type }} | IITB Tech Council{%endblock %} {% block content %}
+<div
+  class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+    <!-- Header -->
+    <h1
+      class="text-4xl md:text-6xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"
+    >
+      {{ type }}
+    </h1>
 
-{% block content %}
-<div class="bg-opacity-10 backdrop-blur-md shadow-lg flex w-screen xl:w-[90%] h-auto flex-col mt-28 mx-auto items-center">
-  <div class="w-full text-white">
-    <h1 class="text-6xl font-font mb-20 font-bold text-center">{{ type }}</h1>
-    
-    <!-- <div class="flex w-screen xl:w-[90%] h-auto flex-col m-28 items-center">
-      <h1 class="text-white font-font font-bold text-6xl mb-20">PORTALS</h1> -->
-
-    <div class="grid grid-cols-1 m-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-8 lg:gap-y-12">
+    <!-- Bodies Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {% for body in bodies %}
-      <a href="{% url 'body_detail' body.name %}" class="block transform transition duration-300 hover:scale-105">
-        <div class="z-10 border border-gray-600 rounded-xl p-6 md:p-6 w-full mx-auto flex flex-col shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-5">
-          <div class="flex items-center">
-            <img src="{{ body.logo.url }}" alt="{{ body.name }} Logo" class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-gray-500 mr-4 md:mr-6" />
-            <h1 class="text-2xl md:text-2xl 2xl:text-4xl font-semibold text-white">{{ body.name }}</h1>
-          </div>
-          <div class="mt-2 text-center">
-            <p class="text-sm md:text-base text-gray-300">{{ body.short_description }}</p>
-          </div>
+      <a
+        href="{% url 'body_detail' body.name %}"
+        class="group bg-slate-800/50 backdrop-blur-md rounded-2xl border border-slate-700/50 p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/10"
+      >
+        <div class="flex items-center gap-4 mb-4">
+          <img
+            src="{{ body.logo.url }}"
+            alt="{{ body.name }} Logo"
+            class="w-20 h-20 rounded-xl object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+          <h2
+            class="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors"
+          >
+            {{ body.name }}
+          </h2>
         </div>
+        <p class="text-gray-300 text-sm line-clamp-3">
+          {{ body.short_description }}
+        </p>
       </a>
       {% endfor %}
     </div>
