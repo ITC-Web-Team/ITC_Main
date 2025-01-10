@@ -131,7 +131,3 @@ COMPRESS_ENABLED = True  # Enable compression
 COMPRESS_OFFLINE = True  # This allows pre-compression during production build
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter']
 COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
-
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
