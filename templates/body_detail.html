@@ -43,7 +43,8 @@ IIT Bombay' }}{% endblock %} {% block content %}
             <div>
               <span class="text-gray-400">Type:</span>
               <span class="text-white ml-2">
-                {% if body.type == 0 %}Club{% elif body.type == 1 %}Tech Team{%else %}Community{% endif %}
+                {% if body.type == 0 %}Club{% elif body.type == 1 %}Tech
+                Team{%else %}Community{% endif %}
               </span>
             </div>
             {% if body.founded_year %}
@@ -226,11 +227,19 @@ IIT Bombay' }}{% endblock %} {% block content %}
         {% for member in members %}
         <div class="group text-center">
           <div class="mb-4">
+            {% if member.photo %}
             <img
               src="{{ member.photo.url }}"
               alt="{{ member.name }}"
               class="w-32 h-32 mx-auto rounded-full object-cover transition-transform duration-300 group-hover:scale-105 shadow-lg"
             />
+            {% else %}
+            <img
+              src="https://picsum.photos/200/300"
+              alt="{{ member.name }}"
+              class="w-32 h-32 mx-auto rounded-full object-cover transition-transform duration-300 group-hover:scale-105 shadow-lg"
+            />
+            {% endif %}
           </div>
           <h3
             class="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors"
