@@ -11,11 +11,11 @@
     <!-- Dynamic Meta Tags -->
     <meta
       name="description"
-      content="{% block description %}Explore IITB Tech Council{% endblock %}"
+      content="{% block description %}IITB Tech Council: Driving innovation and technical excellence at IIT Bombay. Explore our clubs, tech teams, and groundbreaking projects.{% endblock %}"
     />
     <meta
       name="keywords"
-      content="IITB, Tech Council, Clubs, Tech Teams, Portals, Achievements, Hall of Fame, Contact"
+      content="{% block keywords %}IITB, Tech Council, IIT Bombay, Clubs, Tech Teams, Innovation, Student Projects, Technical Achievements{% endblock %}"
     />
     <meta name="author" content="IITB Tech Council" />
 
@@ -26,13 +26,14 @@
     />
     <meta
       property="og:description"
-      content="{% block og_description %}Explore the IITB Tech Council's activities{% endblock %}"
+      content="{% block og_description %}Driving innovation and technical excellence at IIT Bombay{% endblock %}"
     />
     <meta
       property="og:image"
-      content="{% block og_image %}{% static 'img/ITClogoWhite.png' %}{% endblock %}"
+      content="{% static 'img/ITClogoWhite.png' %}"
     />
     <meta property="og:url" content="https://tech-iitb.org" />
+    <meta property="og:type" content="website" />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -48,6 +49,20 @@
       name="twitter:image"
       content="{% block twitter_image %}{% static 'img/ITClogoWhite.png' %}{% endblock %}"
     />
+    <meta name="twitter:site" content="@tech_iitb" />
+    <meta name="twitter:creator" content="@tech_iitb" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical_url %}https://tech-iitb.org{% endblock %}" />
+
+    <!-- Robots Meta Tag -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Mumbai" />
+    <meta name="geo.position" content="19.075984;72.877656" />
+    <meta name="ICBM" content="19.075984, 72.877656" />
 
     <title>{% block title %}IITB Tech Council{% endblock %}</title>
 
@@ -363,11 +378,70 @@
         "name": "IITB Tech Council",
         "url": "https://tech-iitb.org",
         "logo": "https://tech-iitb.org/static/img/ITClogoWhite.png",
+        "description": "Driving innovation and technical excellence at IIT Bombay",
+        "foundingDate": "2018",
+        "founders": [
+          {
+            "@type": "Person", 
+            "name": "IIT Bombay"
+          }
+        ],
         "sameAs": [
           "https://www.facebook.com/tech.iitb",
-          "https://www.instagram.com/tech.iitb",
+          "https://www.instagram.com/tech.iitb", 
           "https://twitter.com/tech_iitb"
-        ]
+        ],
+        "memberOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Indian Institute of Technology Bombay", 
+          "url": "https://www.iitb.ac.in/"
+        },
+        "subOrganization": [
+          {
+            "@type": "Organization",
+            "name": "Clubs",
+            "description": "Technical clubs at IIT Bombay",
+            "members": [
+              "Web & Coding Club",
+              "Robotics Club", 
+              "Electronics Club",
+              "Astronomy Club",
+              "AI & ML Club"
+            ]
+          },
+          {
+            "@type": "Organization", 
+            "name": "Tech Teams",
+            "description": "Technical teams driving innovation",
+            "members": [
+              "Tech Council Web Team",
+              "Inter IIT Tech Team",
+              "Innovation Cell",
+              "Research and Development Team"
+            ]
+          },
+          {
+            "@type": "Organization",
+            "name": "Communities",
+            "description": "Technical communities at IIT Bombay",
+            "members": [
+              "Open Source Community",
+              "Competitive Programming Community", 
+              "Blockchain Community",
+              "Cybersecurity Community"
+            ]
+          }
+        ],
+        "awards": {
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "Award",
+              "name": "Inter IIT Tech Meet Achievements",
+              "description": "Technical achievements in Inter IIT competitions"
+            }
+          ]
+        }
       }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>

@@ -35,11 +35,23 @@ def home(request):
 
 def clubs_list(request):
     clubs = Body.objects.filter(type=0).order_by('name')
-    return render(request, 'body_list.html', {'bodies': clubs , 'type': 'CLUBS'})
+    return render(request, 'body_list.html', {
+        'bodies': clubs, 
+        'type': 'CLUBS',
+        'seo_title': 'IITB Tech Clubs | Innovative Student Organizations',
+        'seo_description': 'Discover the diverse and dynamic tech clubs at IIT Bombay. From coding to robotics, explore student-led technical communities.',
+        'seo_keywords': 'IITB Clubs, Tech Clubs, Student Organizations, IIT Bombay Clubs'
+    })
 
 def techteam_list(request):
     techteam = Body.objects.filter(type=1).order_by('name')
-    return render(request, 'body_list.html', {'bodies': techteam , 'type': 'TECH TEAMS'})
+    return render(request, 'body_list.html', {
+        'bodies': techteam, 
+        'type': 'TECH TEAMS',
+        'seo_title': 'IITB Tech Teams | Cutting-Edge Technical Innovation',
+        'seo_description': 'Explore the innovative tech teams at IIT Bombay driving technological advancements and solving real-world challenges.',
+        'seo_keywords': 'IITB Tech Teams, Technical Innovation, Student Projects'
+    })
 
 def otherbodies_list(request):
     otherbodies = Body.objects.filter(type=2).order_by('name')
@@ -52,7 +64,12 @@ def body_detail(request, name):
 
 def portal_list(request):
     portals = Portal.objects.all().order_by('name')
-    return render(request, 'portal_list.html', {'portals': portals})
+    return render(request, 'portal_list.html', {
+        'portals': portals,
+        'seo_title': 'IITB Tech Portals | Digital Platforms by Tech Council',
+        'seo_description': 'Discover the digital platforms and web applications developed by IIT Bombay Tech Council students.',
+        'seo_keywords': 'IITB Portals, Student Web Applications, Tech Projects'
+    })
 
 def achievement_list(request):
     bodylist = Body.objects.all()
