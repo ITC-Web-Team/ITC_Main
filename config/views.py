@@ -5,19 +5,57 @@ from collections import defaultdict
 def home(request):
     workreports = WorkReport.objects.all().order_by('-title').reverse()
     gallery = Gallery.objects.all()
-    return render(request, 'home.html', {'workreports': workreports, 'gallery': gallery})
+    
+    # Get all bodies with logos
+    clubs = Body.objects.filter(type=0, logo__isnull=False)
+    techteams = Body.objects.filter(type=1, logo__isnull=False)
+    communities = Body.objects.filter(type=2, logo__isnull=False)
+    
+    # Get recent achievements (last 6)
+    recent_achievements = Achievement.objects.all().order_by('-date')[:6]
+    
+    # Get latest Inter IIT results
+    latest_interiit = InterIIT.objects.all().order_by('-year').first()
+    if latest_interiit:
+        latest_problemstatements = ProblemStatements.objects.filter(interiit=latest_interiit)
+    else:
+        latest_problemstatements = None
+    
+    context = {
+        'workreports': workreports,
+        'gallery': gallery,
+        'clubs': clubs,
+        'techteams': techteams,
+        'communities': communities,
+        'recent_achievements': recent_achievements,
+        'latest_interiit': latest_interiit,
+        'latest_problemstatements': latest_problemstatements,
+    }
+    return render(request, 'home.html', context)
 
 def clubs_list(request):
-    clubs = Body.objects.filter(type=0)
-    return render(request, 'body_list.html', {'bodies': clubs , 'type': 'CLUBS'})
+    clubs = Body.objects.filter(type=0).order_by('name')
+    return render(request, 'body_list.html', {
+        'bodies': clubs, 
+        'type': 'CLUBS',
+        'seo_title': 'IITB Tech Clubs | Innovative Student Organizations',
+        'seo_description': 'Discover the diverse and dynamic tech clubs at IIT Bombay. From coding to robotics, explore student-led technical communities.',
+        'seo_keywords': 'IITB Clubs, Tech Clubs, Student Organizations, IIT Bombay Clubs'
+    })
 
 def techteam_list(request):
-    techteam = Body.objects.filter(type=1)
-    return render(request, 'body_list.html', {'bodies': techteam , 'type': 'TECH TEAMS'})
+    techteam = Body.objects.filter(type=1).order_by('name')
+    return render(request, 'body_list.html', {
+        'bodies': techteam, 
+        'type': 'TECH TEAMS',
+        'seo_title': 'IITB Tech Teams | Cutting-Edge Technical Innovation',
+        'seo_description': 'Explore the innovative tech teams at IIT Bombay driving technological advancements and solving real-world challenges.',
+        'seo_keywords': 'IITB Tech Teams, Technical Innovation, Student Projects'
+    })
 
 def otherbodies_list(request):
-    otherbodies = Body.objects.filter(type=2)
-    return render(request, 'body_list.html', {'bodies': otherbodies , 'type': 'OTHER BODIES'})
+    otherbodies = Body.objects.filter(type=2).order_by('name')
+    return render(request, 'body_list.html', {'bodies': otherbodies , 'type': 'COMMUNITIES'})
 
 def body_detail(request, name):
     body = get_object_or_404(Body, name=name)
@@ -25,8 +63,13 @@ def body_detail(request, name):
     return render(request, 'body_detail.html', {'body': body, 'members': members})
 
 def portal_list(request):
-    portals = Portal.objects.all()
-    return render(request, 'portal_list.html', {'portals': portals})
+    portals = Portal.objects.all().order_by('name')
+    return render(request, 'portal_list.html', {
+        'portals': portals,
+        'seo_title': 'IITB Tech Portals | Digital Platforms by Tech Council',
+        'seo_description': 'Discover the digital platforms and web applications developed by IIT Bombay Tech Council students.',
+        'seo_keywords': 'IITB Portals, Student Web Applications, Tech Projects'
+    })
 
 def achievement_list(request):
     bodylist = Body.objects.all()
@@ -58,9 +101,16 @@ def achievement_detail(request, name):
     return render(request, 'achievement_list.html', {'achievements': achievements, 'bodylist': bodylist})
 
 def halloffame(request):
-    interiit_list = InterIIT.objects.all()
+    interiit_list = InterIIT.objects.all().order_by('year').reverse()
     problemstatements = ProblemStatements.objects.all()
-    return render(request, 'halloffame.html', {'interiit_list': interiit_list, 'problemstatements': problemstatements})
+    data = []
+    for i in interiit_list:
+        data.append({
+            'interiit': i,
+            'problemstatements': problemstatements.filter(interiit=i)
+        } )
+
+    return render(request, 'halloffame.html', {'data': data})
 
 def contact(request):
     cabinet = Cabinet.objects.all()
